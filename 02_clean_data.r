@@ -1,5 +1,5 @@
-# Survey data cleansing manager
-# Author: Gabriel Gaze Gonçalves Fontenele Gomes
+# 
+# Author: 
 # Last script update: 2024-08-05
 
 VTI <- readxl::read_excel(path = 'data/raw_data/VTI.xlsx') %>%
