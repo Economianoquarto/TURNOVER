@@ -17,6 +17,5 @@ create_and_clean_dir <- function(dir_path){
   if(!base::dir.exists(dir_path)){ 
     base::dir.create(dir_path) 
   }
-  base::file.remove(base::list.files(dir_path, 
-                                     full.names = TRUE)) 
+
 }
