@@ -21,6 +21,7 @@ library(ivreg)
 library(tidyverse)
 library(writexl)
 library(readxl)
+library(purrr)
 
 # change directory (make sure you're using Rstudio)------------------------
 my_dir <- dirname(rstudioapi::getActiveDocumentContext()$path) 
