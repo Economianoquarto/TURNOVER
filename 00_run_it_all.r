@@ -2,9 +2,7 @@
 # Authors: 
 # Last script update: 2025-08-21
 
-# install.packages('readxl', 'tidyverse', 'sidrar','plm','ivreg', 'tidyverse', 'writexl', 'readxl')
-
-# remotes::install_github("gibonet/decr", build_vignettes = TRUE)
+# install.packages('readxl', 'tidyverse', 'sidrar','plm','ivreg', 'tidyverse', 'writexl', 'readxl', 'purrr, 'tools')
 
 # CLEAN UP WORKSPACE ------------
 rm(list = ls())
@@ -21,6 +19,8 @@ library(ivreg)
 library(tidyverse)
 library(writexl)
 library(readxl)
+library(purrr)
+library(tools)
 
 # change directory (make sure you're using Rstudio)------------------------
 my_dir <- dirname(rstudioapi::getActiveDocumentContext()$path) 

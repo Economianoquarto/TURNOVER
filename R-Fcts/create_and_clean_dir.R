@@ -1,5 +1,5 @@
 # A function that creates directories if they do not already exist and cleans up the files if so
-# Author: Gabriel Gaze Gonçalves Fontenele Gomes
+# Author:
 # Last script update: 2024-05-30
 
 create_and_clean_dir <- function(dir_path){
