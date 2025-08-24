@@ -2,7 +2,7 @@
 # Authors: 
 # Last script update: 2025-08-21
 
-# install.packages('readxl', 'tidyverse', 'sidrar','plm','ivreg', 'tidyverse')
+# install.packages('readxl', 'tidyverse', 'sidrar','plm','ivreg', 'tidyverse', 'writexl', 'readxl')
 
 # remotes::install_github("gibonet/decr", build_vignettes = TRUE)
 
