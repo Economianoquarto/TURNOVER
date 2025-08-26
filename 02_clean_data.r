@@ -41,12 +41,16 @@ df_final <- dados_juntos %>%
   arrange(CNAE_CODIGO, Ano) %>%
   mutate(
     productivity = VTI / PO,
+    GBE_per_worker = GBE / PO,
     flow_of_productivity = (productivity - dplyr::lag(productivity)) / dplyr::lag(productivity),
     flow_of_workers = (PO - dplyr::lag(PO)) / dplyr::lag(PO),
     job_variation = (PO - dplyr::lag(PO)),
     flow_of_ter = (TER - dplyr::lag(TER)) / dplyr::lag(TER),
     flow_of_ter_maq = (TER_MAQ - dplyr::lag(TER_MAQ)) / dplyr::lag(TER_MAQ),
     flow_of_prop = (PROP - dplyr::lag(PROP)) / dplyr::lag(PROP),
+    TER_per_worker = TER / PO,
+    TER_MAQ_per_worker = TER_MAQ / PO,
+    PROP_per_worker = PROP / PO,
     CNAE_CORTADA = stringi::stri_sub(str = CNAE_FORMATADO, from = 1, to = 5)) %>%
   ungroup()
 
