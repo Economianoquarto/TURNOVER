@@ -12,7 +12,7 @@ colunas_by <- c("Ano", "CNAE_FORMATADO", "Classificação Nacional de Atividades
 
 dados_juntos <- reduce(lista_de_bases, inner_join, by = colunas_by)
 
-colunas_para_checar <- c("PO", "TER", "TER_MAQ", "PROP", "GBE")
+colunas_para_checar <- c("PO", "TER", "TER_MAQ", "PROP", "GBE", "VTI", "VTIE","VAE", "POE")
 
 dados_painel_balanceado <- dados_juntos %>%
   group_by(CNAE_CODIGO) %>%
@@ -33,10 +33,6 @@ print(paste("Número de setores depois da filtragem:", n_setores_depois))
 print(paste("Número de setores removidos:", n_setores_antes - n_setores_depois))
 
 df_final <- dados_juntos %>%
-  group_by(CNAE_CODIGO, `Classificação Nacional de Atividades Econômicas (CNAE 2.0)`, CNAE_FORMATADO) %>%
-  arrange(CNAE_CODIGO, Ano) %>%
-  mutate(productivity = VTI / PO)%>%
-  ungroup() %>%
   group_by(CNAE_CODIGO, `Classificação Nacional de Atividades Econômicas (CNAE 2.0)`, CNAE_FORMATADO) %>%
   arrange(CNAE_CODIGO, Ano) %>%
   mutate(

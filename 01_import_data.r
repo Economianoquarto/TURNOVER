@@ -16,13 +16,16 @@ create_and_clean_dir(my_dir)
 # COLOQUE NA ESQUERDA O NOME DA VAR E NA DIREITA A API KEY
 
 apis <- c(
-  VTI     = "/t/7238/n1/all/v/811/p/all/c12762/all", # Valor da transformação industrial
-  PO      = "/t/7238/n1/all/v/631/p/all/c12762/all", # PESSOAL OCUPADO
-  TER     = "/t/7245/n1/all/v/10428/p/all/c12762/all",  # Serviços industriais prestados por terceiros
-  TER_MAQ = "/t/7245/n1/all/v/10429/p/all/c12762/all", # Serviços de manutenção e reparação de máquinas e equipamentos ligados à produção prestados por terceiros
-  PROP    = "/t/7245/n1/all/v/1273/p/all/c12762/all", #Despesas com propaganda
-  GBE     = "/t/7241/n1/all/v/862/p/all/c12762/all" # GASTOS COM BENEFÍCIOS A EMPREGADOS
-)
+  VTI     = "/t/7238/n1/all/v/811/p/all/c12762/all", # Unidade Local - Valor da transformação industrial
+  PO      = "/t/7238/n1/all/v/631/p/all/c12762/all", # Unidade Local - Pessoal ocupado
+  TER     = "/t/7245/n1/all/v/10428/p/all/c12762/all",  # Empresa - Serviços industriais prestados por terceiros
+  TER_MAQ = "/t/7245/n1/all/v/10429/p/all/c12762/all", # Empresa - Serviços de manutenção e reparação de máquinas e equipamentos ligados à produção prestados por terceiros
+  PROP    = "/t/7245/n1/all/v/1273/p/all/c12762/all", # Empresa - Despesas com propaganda
+  GBE     = "/t/7241/n1/all/v/862/p/all/c12762/all", # Empresa - Gastos com benefícios a empregados
+  VTIE     = "/t/7244/n1/all/v/811/p/all/c12762/all", # Empresa - Valor da transformação industrial
+  VAE      = "/t/7244/n1/all/v/1242/p/all/c12762/all", # Empresa - Valor adicionado
+  POE      = "/t/7241/n1/all/v/631/p/all/c12762/all" # Empresa - Pessoal ocupado
+    )
 
 args <- tibble::tibble(
   api = unname(apis),
