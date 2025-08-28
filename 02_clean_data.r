@@ -43,6 +43,15 @@ df_final <- dados_juntos %>%
     flow_of_ter = (TER - dplyr::lag(TER)) / dplyr::lag(TER),
     flow_of_ter_maq = (TER_MAQ - dplyr::lag(TER_MAQ)) / dplyr::lag(TER_MAQ),
     flow_of_prop = (PROP - dplyr::lag(PROP)) / dplyr::lag(PROP),
+    productivitye = VTIE / POE,
+    SAL_per_trab = SAL / POE,
+    BEN_per_trab = GBE / POE,
+    PREVSOC_per_trab = PREV_SOC / POE,
+    PREVPRI_per_trab = PREV_PRI / POE,
+    INDENIZ_per_trab = INDENIZ / POE,
+    TER_per_trab = TER / POE,
+    TERMAQ_per_trab = TER_MAQ / POE,
+    PROP_per_trab = PROP / POE,
     CNAE_CORTADA = stringi::stri_sub(str = CNAE_FORMATADO, from = 1, to = 5)) %>%
   ungroup()
 

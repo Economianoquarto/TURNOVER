@@ -24,7 +24,11 @@ apis <- c(
   GBE     = "/t/7241/n1/all/v/862/p/all/c12762/all", # Empresa - Gastos com benefícios a empregados
   VTIE     = "/t/7244/n1/all/v/811/p/all/c12762/all", # Empresa - Valor da transformação industrial
   VAE      = "/t/7244/n1/all/v/1242/p/all/c12762/all", # Empresa - Valor adicionado
-  POE      = "/t/7241/n1/all/v/631/p/all/c12762/all" # Empresa - Pessoal ocupado
+  POE      = "/t/7241/n1/all/v/631/p/all/c12762/all", # Empresa - Pessoal ocupado
+  SAL      = "/t/7241/n1/all/v/822/p/all/c12762/all", # Empresa - Salarios
+  PREV_SOC  = "/t/7241/n1/all/v/859/p/all/c12762/all", # Empresa - Previdencia social
+  PREV_PRI  = "/t/7241/n1/all/v/858/p/all/c12762/all", # Empresa - Previdencia privada
+  INDENIZ  = "/t/7241/n1/all/v/861/p/all/c12762/all" # Empresa - Indenizações
     )
 
 args <- tibble::tibble(
