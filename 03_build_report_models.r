@@ -19,7 +19,7 @@ mod0 <- plm(productivitye ~ BEN_per_trab + SAL_per_trab + PREVSOC_per_trab + PRE
 
 print(summary(mod0))
 
-mod1 <- plm(BEN_per_trab ~ PROP_per_trab, 
+mod1 <- plm(INDENIZ_per_trab ~ PROP_per_trab, 
             data = model_data, 
             model="within", 
             effect="twoways")
