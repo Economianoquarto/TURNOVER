@@ -52,10 +52,23 @@ df_final <- dados_juntos %>%
     TER_per_trab = TER / POE,
     TERMAQ_per_trab = TER_MAQ / POE,
     PROP_per_trab = PROP / POE,
-    CNAE_CORTADA = stringi::stri_sub(str = CNAE_FORMATADO, from = 1, to = 5)) %>%
+    cnae = stringi::stri_sub(str = CNAE_FORMATADO, from = 1, to = 5)) %>%
   ungroup()
 
-writexl::write_xlsx(x = df_final, path = 'data/model_data/model_data.xlsx')
+
+# IMPORTA BASE DE DESONERAÇÃO
+desoneracao <- readxl::read_excel("data/externals/desoneracao_staggered.xlsx", col_types = c("text", "text", "numeric"))
+
+df <- inner_join(df_final, desoneracao, by = c("cnae", "Ano"))
+
+df <- df %>%
+  mutate(Ano = as.numeric(Ano)) %>%
+  separate(cnae, into = c("twodigits", "trash"), sep = "\\.", remove = FALSE) %>%
+  group_by(cnae) %>%
+  mutate(cnaeidnum = cur_group_id()) %>%
+  ungroup()
+
+writexl::write_xlsx(df, path = 'data/model_data/model_data.xlsx')
 
 # CLEAN ENVIRONMENT (EXCEPT FOR FUNCTIONS SOURCED) ------------------------
 base::rm(list = setdiff(ls(), lsf.str()))
