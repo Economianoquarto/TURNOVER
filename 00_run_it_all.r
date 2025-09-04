@@ -21,6 +21,10 @@ library(writexl)
 library(readxl)
 library(purrr)
 library(tools)
+library(broom)
+library(fixest)
+library(did)
+library(etwfe)
 
 # change directory (make sure you're using Rstudio)------------------------
 my_dir <- dirname(rstudioapi::getActiveDocumentContext()$path) 
