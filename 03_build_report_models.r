@@ -26,6 +26,7 @@ tg <- df2 %>%
             .groups = "drop")
 
 write_xlsx(tg, path = "data/model_data/treatment_groups.xlsx")
+# CER COMANDO LATEX
 
 ## 4) diddf com um único mutate (padronizando Ano -> inteiro)
 diddf <- df2 %>%
@@ -80,6 +81,7 @@ esdesc <- esdesc %>%
   arrange(Variable, treated)
 
 write_xlsx(esdesc, path = "data/model_data/esdesc.xlsx")
+# VER COMANDO PARA GERAR TEX
 
 # Lista das variáveis dependentes
 dependent_vars <- c("PREVSOC_per_trab", "SAL_per_trab", "BEN_per_trab", 
@@ -90,7 +92,7 @@ all_results <- list()
 
 # Loop para cada variável dependente
 for (var in dependent_vars) {
-  
+#var <- "PREVSOC_per_trab"
   cat("Processando variável:", var, "\n")
   
   # Criar fórmula dinâmica
