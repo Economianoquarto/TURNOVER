@@ -2,3 +2,42 @@
 .Rhistory
 .RData
 .Ruserdata
+# Arquivos de compilação e auxiliares do LaTeX
+*.aux
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.fls
+*.log
+*.lof
+*.lot
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.bbl
+*.blg
+*.brf
+*.ilg
+*.ind
+*.out
+*.nav
+*.snm
+*.vrb
+
+# Arquivos gerados por pacotes específicos
+/_minted/
+*.pyg
+
+# Arquivos do editor
+.DS_Store
+*~
+*.swp
+*.bak
+
+# O PDF final (leia a observação abaixo)
+# Descomente a linha abaixo para ignorar o PDF
+*.pdf
