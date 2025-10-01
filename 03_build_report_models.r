@@ -26,7 +26,7 @@ tg <- df2 %>%
             .groups = "drop")
 
 write_xlsx(tg, path = "data/model_data/treatment_groups.xlsx")
-# CER COMANDO LATEX
+# vER COMANDO LATEX
 
 ## 4) diddf com um único mutate (padronizando Ano -> inteiro)
 diddf <- df2 %>%
@@ -54,22 +54,29 @@ diddf <- df2 %>%
     
     anotratado   = Ano * treated
   )
-#productivitye
+
 #SAL_per_trab
-#BEN_per_trab
-#PREVSOC_per_trab
-#PREVPRI_per_trab
-#INDENIZ_per_trab
-#TER_per_trab
-#TERMAQ_per_trab
-#PROP_per_trab
+#SAL_per_trabBC
+#SAL_per_trabWC
+#SAL_per_trabSOCIO 
+#SAL_share 
+#BEN_per_trab 
+#BEN_shr
+#BEN_shr_pessoal 
+#PREVSOC_shr 
+#PREVSOC_shr_pessoal 
+#PREVPRI_shr
+#PREVPRI_shr_pessoal 
+#INDENIZ_shr
+#TER_shr 
+#PROP_shr
 
 esdesc <-diddf %>% 
   group_by(treated) %>% 
-  summarise(mean_iprevsoc = mean(PREVSOC_per_trab, na.rm = T),
-            sd_iprevsoc = sd(PREVSOC_per_trab, na.rm = T),
-            min_iprevsoc = min(PREVSOC_per_trab, na.rm = T),
-            max_iprevsoc = max(PREVSOC_per_trab, na.rm = T)) %>% 
+  summarise(mean_iprevsoc = mean(PREVSOC_shr_pessoal, na.rm = T),
+            sd_iprevsoc = sd(PREVSOC_shr_pessoal, na.rm = T),
+            min_iprevsoc = min(PREVSOC_shr_pessoal, na.rm = T),
+            max_iprevsoc = max(PREVSOC_shr_pessoal, na.rm = T)) %>% 
   ungroup()
 
 esdesc <-esdesc %>%
@@ -84,8 +91,12 @@ write_xlsx(esdesc, path = "data/model_data/esdesc.xlsx")
 # VER COMANDO PARA GERAR TEX
 
 # Lista das variáveis dependentes
-dependent_vars <- c("PREVSOC_per_trab", "SAL_per_trab", "BEN_per_trab", 
-                    "TER", "INDENIZ_per_trab")
+dependent_vars <- c("BEN_per_trab", 
+                    "PREVSOC_per_trab",
+                    "SAL_per_trabBC",
+                    "SAL_per_trabWC",
+                    "SAL_per_trabSOCIO"
+                    )
 
 # Lista para armazenar todos os resultados
 all_results <- list()
