@@ -95,7 +95,10 @@ dependent_vars <- c("BEN_per_trab",
                     "PREVSOC_per_trab",
                     "SAL_per_trabBC",
                     "SAL_per_trabWC",
-                    "SAL_per_trabSOCIO"
+                    "SAL_per_trabSOCIO",
+                    "SALSOCIO",
+                    "SALWC",
+                    "SALBC"
                     )
 
 # Lista para armazenar todos os resultados
