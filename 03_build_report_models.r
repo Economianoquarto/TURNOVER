@@ -91,14 +91,14 @@ write_xlsx(esdesc, path = "data/model_data/esdesc.xlsx")
 # VER COMANDO PARA GERAR TEX
 
 # Lista das variáveis dependentes
-dependent_vars <- c("BEN_per_trab", 
-                    "PREVSOC_per_trab",
-                    "SAL_per_trabBC",
-                    "SAL_per_trabWC",
-                    "SAL_per_trabSOCIO",
-                    "SALSOCIO",
-                    "SALWC",
-                    "SALBC"
+dependent_vars <- c("BEN_pertrab",
+                    #"REC_pertrab",
+                    "PREVSOC_pertrab",
+                    "SAL_pertrabBC",
+                    "SAL_pertrabWC",
+                    "POEWC_perfirm",
+                    "POEBC_perfirm",
+                    "POE_perfirm"
                     )
 
 # Lista para armazenar todos os resultados
