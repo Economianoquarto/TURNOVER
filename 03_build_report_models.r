@@ -1,19 +1,64 @@
+# 
+# Authors: Caio Matteucci, Gabriel Gaze
+# Last script update: 2025-08-21
+# Files available at https://sidra.ibge.gov.br/Tabela/7238
+
+
 # IMPORT MODEL_DATA
 
-df <- readxl::read_excel(path = 'data/model_data/model_data.xlsx')
+diddf2 <- readxl::read_excel(path = 'data/model_data/model_data.xlsx')
 
-## 1) somatório por cnae
-sum_by <- df %>%
-  select(cnae, Ano, finalpolicy) %>%
-  group_by(cnae) %>%
-  summarise(sum_amount = sum(finalpolicy, na.rm = TRUE), .groups = "drop")
+dependent_vars <- c("BEN_pertrab",
+                  "PREVSOC_pertrab",
+                  "SAL_pertrabBC",
+                  "SAL_pertrabWC",
+                  "POEBC_perfirm",
+                  "POEWC_perfirm")
 
-## 2) junta sum_amount de volta ao df
-df2 <- df %>% left_join(sum_by, by = "cnae")
+# ESTATÍSTICA DESCRITIVA ------------------
 
-## 3) tabela de grupos (distinct cnae x grupo) e exporta
-tg <- df2 %>%
-  distinct(cnae, sum_amount) %>%
+groups_plot <- diddf %>%  
+  dplyr::select(cnae, sum_amount) %>% 
+  base::unique() %>% 
+  dplyr::mutate(
+    sum_amount = dplyr::case_when(
+      sum_amount == 4 ~ "Tratado 2011",
+      sum_amount == 3 ~ "Tratado 2012",
+      sum_amount == 0 ~ "Não tratado",
+      TRUE ~ as.character(sum_amount)
+    )
+  ) %>% 
+  dplyr::group_by(sum_amount) %>% 
+  dplyr::summarise(total = n(), .groups = "drop") %>% 
+  dplyr::arrange(desc(total)) %>%
+  ggplot2::ggplot(aes(x = reorder(sum_amount, total), y = total)) +
+  ggplot2::geom_col(fill = "steelblue", width = 0.6) +
+  ggplot2::geom_text(aes(label = total), hjust = -0.2, size = 4) +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    title = NULL,
+    x = NULL,
+    y = NULL
+  ) +
+  ggplot2::theme_minimal() +
+  ggplot2::theme(
+    panel.grid = element_blank(),
+    axis.text.x  = element_blank(),
+    axis.ticks.x = element_blank(),
+    axis.text.y  = element_text(
+      face = "bold",   # negrito
+      size = 14        # aumenta o tamanho
+    )
+  )
+
+ggplot2::ggsave(file.path("figs", 'NÚMERO DE SETORES POR ANO DE TRATAMENTO.png'), 
+                plot = groups_plot,
+                width = 10, height = 6)
+
+
+## TABELA DOS SETORES POR GRUPO DE TRATAMENTO
+tg <- diddf %>%
+  dplyr::distinct(cnae, sum_amount) %>%
   mutate(
     group = case_when(
       sum_amount == 4 ~ "treated in 2012",
@@ -25,255 +70,307 @@ tg <- df2 %>%
   summarise(cnae = paste(sort(unique(cnae)), collapse = " , "),
             .groups = "drop")
 
-write_xlsx(tg, path = "data/model_data/treatment_groups.xlsx")
-# vER COMANDO LATEX
+writexl::write_xlsx(tg, path = "tables/treatment_groups.xlsx")
 
-## 4) diddf com um único mutate (padronizando Ano -> inteiro)
-diddf <- df2 %>%
+
+
+total_tratados <- base::sum(diddf$finalpolicy, na.rm = TRUE)
+media_geral <- base::mean(diddf$finalpolicy, na.rm = TRUE)
+sd_geral <- stats::sd(diddf$finalpolicy, na.rm = TRUE)
+n_tratados <- base::sum(diddf$finalpolicy == 0, na.rm = TRUE)
+
+esdesc <- tibble::tibble(
+  Ano = c('Total', '< 2012', '2012', '>= 2013'),
+  `Média` = c(media_geral,
+            base::mean(diddf$finalpolicy[diddf$Ano == 2011], na.rm = TRUE),
+            base::mean(diddf$finalpolicy[diddf$Ano == 2012], na.rm = TRUE),
+            base::mean(diddf$finalpolicy[diddf$Ano == 2013], na.rm = TRUE)),
+  `Desvio padrão` = c(sd_geral,
+             stats::sd(diddf$finalpolicy[diddf$Ano == 2011], na.rm = TRUE),
+             stats::sd(diddf$finalpolicy[diddf$Ano == 2012], na.rm = TRUE),
+             stats::sd(diddf$finalpolicy[diddf$Ano == 2013], na.rm = TRUE)),
+  `Total de tratados` = c(total_tratados,
+                          base::sum(diddf$finalpolicy[diddf$Ano == 2011], na.rm = TRUE),
+                          base::sum(diddf$finalpolicy[diddf$Ano == 2012], na.rm = TRUE),
+                          base::sum(diddf$finalpolicy[diddf$Ano == 2013], na.rm = TRUE)),
+  `Total de não tratados` = c(n_tratados,
+                              base::sum(diddf$finalpolicy[diddf$Ano == 2011] == 0, na.rm = TRUE),
+                              base::sum(diddf$finalpolicy[diddf$Ano == 2012] == 0, na.rm = TRUE),
+                              base::sum(diddf$finalpolicy[diddf$Ano == 2013] == 0, na.rm = TRUE))
+)
+
+
+writexl::write_xlsx(x = esdesc, path = 'tables/Estatística descritiva.xlsx')
+
+
+# BOXPLOT
+bxplot <- diddf %>%
+  dplyr::filter(Ano <= 2011) %>% 
+  select(all_of(dependent_vars), year_treated) %>% 
+  pivot_longer(
+    cols = all_of(dependent_vars),
+    names_to = "variable",
+    values_to = "value"
+  ) %>%
   mutate(
-    Ano = as.integer(Ano),
-    
-    first_treat = ifelse(sum_amount == 4, 2012,
-                         ifelse(sum_amount == 0, 0, 2013)),
-    
-    first.treat = ifelse(sum_amount == 4, 2012,
-                         ifelse(sum_amount == 0, NA, 2013)),
-    
-    time_to_treat = ifelse(first_treat != 0, Ano - first.treat, 0),
-    
-    treat2012    = factor(ifelse(first.treat == 2012, 1, 0),
-                          levels = c(0,1), labels = c("no","yes")),
-    treat2013    = factor(ifelse(first.treat == 2013, 1, 0),
-                          levels = c(0,1), labels = c("no","yes")),
-    nevertreated = factor(ifelse(is.na(first.treat), 1, 0),
-                          levels = c(0,1), labels = c("no","yes")),
-    
-    treated      = ifelse(first_treat != 0, 1, 0),
-    
-    year_treated = ifelse(treated == 0, 10000, first.treat),
-    
-    anotratado   = Ano * treated
+    # substituindo 1000 por "Não tratado" e mantendo o restante como fator
+    treated = ifelse(year_treated == 10000, "Não tratado", as.character(year_treated)),
+  ) %>% 
+  ggplot(aes(x = treated, y = value, fill = treated)) +
+  geom_boxplot(outlier.color = "red", outliers = FALSE, varwidth = TRUE) +
+  facet_wrap(~variable, scales = "free_y") +  
+  labs(x = NULL, y = "Valor", fill = "Grupo de tratamento", title = "Variáveis dependentes por grupo tratado no período pré política") +
+  stat_summary(fun = mean, geom = "point", shape = 18, size = 3, color = "black") +
+  theme_minimal() +
+  labs(title = "Variáveis dependentes por grupo de tratamento \n no período pré tratamento") +
+  theme(
+    axis.text.x = element_blank(),  # remove textos do eixo x
+    axis.ticks.x = element_blank(), # remove ticks do eixo x
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    legend.position = "top",        # legenda no topo
+    plot.title = element_text(hjust = 0.5)  
+    )
+
+ggplot2::ggsave(file.path("figs", 'BOXPLOT.png'), 
+                plot = bxplot,
+                width = 10, height = 6)
+
+
+line_plot <- diddf %>%
+  dplyr::select(Ano, year_treated, all_of(dependent_vars)) %>%
+  tidyr::pivot_longer(
+    cols = all_of(dependent_vars),
+    names_to = "variable",
+    values_to = "value"
+  ) %>%
+  dplyr::group_by(Ano, year_treated, variable) %>%
+  dplyr::summarise(
+    mean_value = mean(value, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    treated = ifelse(year_treated == 10000, "Não tratado", as.character(year_treated))
+    ) %>% 
+  ggplot(aes(x = Ano, y = mean_value, color = treated)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  geom_vline(xintercept = 2012, linetype = "dashed") +
+  geom_vline(xintercept = 2013, linetype = "dashed") +
+  facet_wrap(~ variable, scales = "free_y") +
+  labs(
+    x = "Ano",
+    y = "Média",
+    color = "Grupo",
+    title = "Tendências médias por grupo tratado",
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "top",
+    axis.ticks.x = element_blank(), # remove ticks do eixo x
+    axis.ticks.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank(),
+    plot.title = element_text(hjust = 0.5)  # legenda no topo
   )
 
-#SAL_per_trab
-#SAL_per_trabBC
-#SAL_per_trabWC
-#SAL_per_trabSOCIO 
-#SAL_share 
-#BEN_per_trab 
-#BEN_shr
-#BEN_shr_pessoal 
-#PREVSOC_shr 
-#PREVSOC_shr_pessoal 
-#PREVPRI_shr
-#PREVPRI_shr_pessoal 
-#INDENIZ_shr
-#TER_shr 
-#PROP_shr
+ggplot2::ggsave(file.path("figs", 'TENDÊNCIAS.png'), 
+                plot = line_plot,
+                width = 10, height = 6)
 
-esdesc <-diddf %>% 
-  group_by(treated) %>% 
-  summarise(mean_iprevsoc = mean(PREVSOC_shr_pessoal, na.rm = T),
-            sd_iprevsoc = sd(PREVSOC_shr_pessoal, na.rm = T),
-            min_iprevsoc = min(PREVSOC_shr_pessoal, na.rm = T),
-            max_iprevsoc = max(PREVSOC_shr_pessoal, na.rm = T)) %>% 
-  ungroup()
+# MODELOS --------------
 
-esdesc <-esdesc %>%
-  pivot_longer(!treated, names_to = "statistic", values_to = "value")
 
-esdesc <- esdesc %>%
-  separate_wider_delim(statistic, delim = "_", names = c("Statistic", "Variable"))%>%
-  relocate("Variable", "Statistic", "treated", "value") %>%
-  arrange(Variable, treated)
+final_results <- purrr::map_dfr(
+  dependent_vars,
+  ~ run_did_models(diddf = diddf, var = .x)
+) %>% 
+  dplyr::mutate(Iteracao = 'Original') 
 
-write_xlsx(esdesc, path = "data/model_data/esdesc.xlsx")
-# VER COMANDO PARA GERAR TEX
 
-# Lista das variáveis dependentes
-dependent_vars <- c("BEN_pertrab",
-                    #"REC_pertrab",
-                    "PREVSOC_pertrab",
-                    "SAL_pertrabBC",
-                    "SAL_pertrabWC",
-                    "POEWC_perfirm",
-                    "POEBC_perfirm",
-                    "POE_perfirm"
-                    )
-
-# Lista para armazenar todos os resultados
-all_results <- list()
-
-# Loop para cada variável dependente
-for (var in dependent_vars) {
-#var <- "PREVSOC_per_trab"
-  cat("Processando variável:", var, "\n")
-  
-  # Criar fórmula dinâmica
-  formula_twfe <- as.formula(paste(var, "~ finalpolicy + factor(cnaeidnum) + factor(Ano)"))
-  formula_feols <- as.formula(paste(var, "~ i(time_to_treat, treated, ref = -1) | factor(cnaeidnum) + factor(Ano)"))
-  formula_sa <- as.formula(paste(var, "~ sunab(year_treated, Ano, ref.p=-1) | factor(cnaeidnum) + factor(Ano)"))
-  
-  # 1. TWFE model 
-  twfe_model <- lm(formula_twfe, data = diddf)
-  
-  # Salvar resultado TWFE
-  write_xlsx(tidy(twfe_model), path = paste0("data/model_data/twfe_", var, ".xlsx"))
-  
-  # 2. Event Study TWFE
-  twfe_es <- feols(formula_feols, vcov_cluster, data = diddf)
-  tidy_twfe <- tidy(twfe_es, conf.int = TRUE)
-  
-  tidy_twfe <- tidy_twfe %>%
-    mutate(term = ifelse(term == 'time_to_treat::-6:treated', -6, 
-                         ifelse(term == 'time_to_treat::-5:treated', -5,
-                                ifelse(term == 'time_to_treat::-4:treated', -4,
-                                       ifelse(term == 'time_to_treat::-3:treated', -3,
-                                              ifelse(term == 'time_to_treat::-2:treated', -2, 
-                                                     ifelse(term == 'time_to_treat::-1:treated', -1,
-                                                            ifelse(term == 'time_to_treat::0:treated', 0,
-                                                                   ifelse(term == 'time_to_treat::1:treated', 1,
-                                                                          ifelse(term == 'time_to_treat::2:treated', 2, 
-                                                                                 3)))))))))) 
-  
-  tidy_twfe <- tidy_twfe %>% 
-    dplyr::select(term, estimate, std.error, conf.low, conf.high) %>%
-    mutate(approach = "TWFE", variable = var)
-  
-  # 3. Sun and Abraham method
-  sa_model <- feols(formula_sa, vcov_cluster, data = diddf)
-  tidy_sa <- tidy(sa_model, conf.int = TRUE)
-  
-  tidy_sa <- tidy_sa %>%
-    mutate(term = ifelse(term == 'Ano::-6', -6, 
-                         ifelse(term == 'Ano::-5', -5,
-                                ifelse(term == 'Ano::-4', -4,
-                                       ifelse(term == 'Ano::-3', -3,
-                                              ifelse(term == 'Ano::-2', -2, 
-                                                     ifelse(term == 'Ano::-1', -1,
-                                                            ifelse(term == 'Ano::0', 0,
-                                                                   ifelse(term == 'Ano::1', 1,
-                                                                          ifelse(term == 'Ano::2', 2, 
-                                                                                 3)))))))))) 
-  
-  tidy_sa <- tidy_sa %>% 
-    dplyr::select(term, estimate, std.error, conf.low, conf.high) %>%
-    mutate(approach = "Sun & Abraham", variable = var)
-  
-  # 4. Callaway & Sant'anna
-  csa_model <- att_gt(yname = var,
-                      gname = "first_treat",
-                      idname = "cnaeidnum",
-                      tname = "Ano",
-                      xformla = ~ 1,
-                      data = diddf,
-                      est_method = "dr",
-                      control_group = "nevertreated",
-                      bstrap = T,
-                      base_period = "universal",
-                      allow_unbalanced_panel = T)
-  
-  csa_es <- aggte(csa_model, type = "dynamic")
-  tidy_csa <- tidy(csa_es)
-  
-  tidy_csa <- tidy_csa %>%
-    mutate(term = ifelse(term == 'ATT(-6)', -6, 
-                         ifelse(term == 'ATT(-5)', -5,
-                                ifelse(term == 'ATT(-4)', -4,
-                                       ifelse(term == 'ATT(-3)', -3,
-                                              ifelse(term == 'ATT(-2)', -2, 
-                                                     ifelse(term == 'ATT(-1)', -1,
-                                                            ifelse(term == 'ATT(0)', 0,
-                                                                   ifelse(term == 'ATT(1)', 1,
-                                                                          ifelse(term == 'ATT(2)', 2, 
-                                                                                 3)))))))))) 
-  
-  tidy_csa <- tidy_csa %>% 
-    dplyr::select(term, estimate, std.error, conf.low, conf.high) %>%
-    mutate(approach = "Callaway & Sant'anna", variable = var)
-  
-  # 5. ETWFE
-  etwfe_model <- etwfe(fml = as.formula(paste(var, "~ 1")),
-                       tvar = Ano,
-                       gvar = first_treat,
-                       data = diddf,
-                       vcov = ~cnaeidnum,
-                       cgroup = "never")
-  
-  etwfe_es <- emfx(etwfe_model, type = "event")
-  tidy_etwfe <- tidy(etwfe_es)
-  
-  tidy_etwfe <- tidy_etwfe %>%
-    select(-term) %>%
-    rename(term = event)
-  
-  tidy_etwfe <- tidy_etwfe %>% 
-    dplyr::select(term, estimate, std.error, conf.low, conf.high) %>%
-    mutate(approach = "ETWFE", variable = var)
-  
-  # Combinar todos os resultados para esta variável
-  var_results <- rbind(tidy_twfe, tidy_sa, tidy_csa, tidy_etwfe)
-  
-  # Adicionar à lista de todos os resultados
-  all_results[[var]] <- var_results
-  
-  # Criar gráfico para esta variável
-  dodge <- position_dodge(width = 0.3)
-  
-  p <- ggplot(var_results, aes(x = term,
-                               y = estimate,
-                               ymin = conf.low,
-                               ymax = conf.high,
-                               color = approach,
-                               shape = approach)) +
-    geom_pointrange(position = dodge) +
-    geom_hline(yintercept = 0, color = "black") +
-    geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
-    labs(x = "Time to treatment",
-         y = "ATT",
-         title = paste("Group-Time ATTs por abordagem -", var)) +
-    facet_wrap(~approach) +  
-    theme_minimal()
-  
-  # Salvar gráfico
-  
-  ggsave(file.path("figs", paste0("res_", var, ".png")), plot = p, width = 10, height = 6)
-  
-   
-  cat("Concluído para variável:", var, "\n\n")
-}
-
-# Combinar todos os resultados em um único dataframe
-final_results <- do.call(rbind, all_results)
-
-# Salvar resultados combinados
-write_xlsx(final_results, path = "data/model_data/all_estimators_results.xlsx")
-
-# Criar gráfico comparativo com todas as variáveis
-comparison_plot <- ggplot(final_results, aes(x = term,
-                                             y = estimate,
-                                             ymin = conf.low,
-                                             ymax = conf.high,
-                                             color = approach,
-                                             shape = approach)) +
-  geom_pointrange(position = position_dodge(width = 0.3)) +
-  geom_hline(yintercept = 0, color = "black") +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
-  labs(x = "Time to treatment",
+comparison_plot <- final_results %>% 
+  ggplot2::ggplot(aes(x = term,
+                      y = estimate,
+                      ymin = conf.low,
+                      ymax = conf.high,
+                      color = approach,
+                      shape = approach)) +
+  ggplot2::geom_pointrange(position = position_dodge(width = 0.3)) +
+  ggplot2::geom_hline(yintercept = 0, color = "black") +
+  ggplot2::geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  ggplot2::labs(x = "Time to treatment",
        y = "ATT",
        title = "Comparação de ATTs por variável e abordagem") +
-  facet_grid(variable ~ approach, scales = "free_y") +  
-  theme_bw() +
-  theme(
+  ggplot2::facet_grid(variable ~ approach, scales = "free_y") +  
+  ggplot2::theme_bw() +
+  ggplot2::theme(
     panel.background = element_rect(fill = "white", color = NA),
     plot.background = element_rect(fill = "white", color = NA),
     strip.background = element_rect(fill = "white", color = "black"),
     panel.grid.major = element_line(color = "grey90"),
     panel.grid.minor = element_line(color = "grey95"),
     axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+  ggplot2::theme(
+    legend.position = "none",   # <<< remove a legenda
+    panel.background = element_rect(fill = "white", color = NA),
+    plot.background = element_rect(fill = "white", color = NA),
+    strip.background = element_rect(fill = "white", color = "black"),
+    panel.grid.major = element_line(color = "grey90"),
+    panel.grid.minor = element_line(color = "grey95"),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.title.y = element_blank(),
+    axis.title.x = element_blank(),
+  )
+ 
+ggplot2::ggsave(file.path("figs", "comparison_all_variables.png"), plot = comparison_plot, width = 16, height = 20, bg = "white")
+
+
+# PLACEBO TEST -------------------------
+
+vars_to_test <- c("BEN_pertrab", 'PREVSOC_pertrab')
+
+placebo_df <- diddf %>% 
+  dplyr::select(-sum_amount, 
+                -first_treat,
+                -first.treat,
+                -time_to_treat,
+                -treat2012,
+                -treat2013,
+                -nevertreated,
+                -treated,
+                -year_treated,
+                -anotratado)
+
+final_results_placebo <- run_placebo_tests(placebo_df = placebo_df, 
+                                           vars_to_test = vars_to_test, 
+                                           iter = 1000, 
+                                           seed = 80) %>% 
+  dplyr::mutate(Iteracao = as.character(Iteracao)) %>% 
+  dplyr::bind_rows(final_results) %>% 
+  dplyr::mutate(
+    is_placebo = Iteracao != "Original"
+  ) %>% 
+  dplyr::filter(variable %in% vars_to_test)
+
+writexl::write_xlsx(x = final_results_placebo, path = 'data/model_data/PLACEBOS.xlsx')
+
+
+original <- final_results_placebo %>%
+  dplyr::filter(Iteracao == "Original", term >= 0) %>%
+  dplyr::select(approach, variable, term, estimate) %>%
+  dplyr::rename(orig_estimate = estimate)
+
+placebo_pval <- final_results_placebo %>%
+  dplyr::filter(Iteracao != "Original", term >= 0) %>% 
+  dplyr::left_join(original, by = c("approach", "variable", "term")) %>%
+  dplyr::mutate(larger_than_orig = abs(estimate) >= abs(orig_estimate)) %>%
+  dplyr::group_by(approach, variable, term) %>%
+  dplyr::summarise(
+    n_placebos = n(),
+    n_larger = sum(larger_than_orig),
+    prop_larger = n_larger / n_placebos
+  ) %>%
+  ungroup()
+
+writexl::write_xlsx(x = placebo_pval, path = 'tables/placebo_summary.xlsx')
+
+post_effects <- final_results_placebo %>%
+  dplyr::filter(term >= 0) %>%
+  dplyr::group_by(variable, approach, Iteracao, is_placebo) %>%
+  dplyr::summarise(
+    post_ATT = mean(abs(estimate)),
+    .groups = "drop"
   )
 
-# Salvar gráfico comparativo
-ggsave(file.path("figs", "comparison_all_variables.png"), plot = comparison_plot, width = 16, height = 20, bg = "white")
+original_effect <- post_effects %>%
+  dplyr::filter(!is_placebo)
 
-cat("Análise completa! Todos os resultados foram salvos.\n")
+placebo_effects <- post_effects %>%
+  dplyr::filter(is_placebo)
+
+placebo_hist <- ggplot2::ggplot(placebo_effects, aes(x = post_ATT)) +
+  ggplot2::geom_histogram(bins = 20, fill = "grey80", color = "black") +
+  ggplot2::geom_vline(
+    data = original_effect,
+    aes(xintercept = post_ATT),
+    color = "red",
+    linetype = "dashed",
+    linewidth = 1
+  ) +
+  ggplot2::facet_grid(variable ~ approach, scales = "free") +
+  ggplot2::labs(
+    title = "Distribuição dos efeitos placebo em módulo",
+    subtitle = "Linha vermelha: efeito médio do tratamento verdadeiro em módulo",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_bw()
+
+ggplot2::ggsave(file.path("figs", "DIST_PLACEBO.png"), plot = placebo_hist, width = 16, height = 20, bg = "white")
+
+  
+placebo_bands <- final_results_placebo  %>%
+  dplyr::filter(is_placebo) %>%
+  dplyr::group_by(variable, approach, term) %>%
+  dplyr::summarise(
+    p5  = quantile(estimate, 0.05),
+    p95 = quantile(estimate, 0.95),
+    .groups = "drop"
+  )
+
+original_es <- final_results_placebo  %>%
+  dplyr::filter(!is_placebo)
+
+envelopamento <- placebo_bands %>% 
+  ggplot2::ggplot() +
+  ggplot2::geom_ribbon(
+    aes(x = term, ymin = p5, ymax = p95),
+    fill = "grey80"
+  ) +
+  ggplot2::geom_line(
+    data = original_es,
+    aes(x = term, y = estimate),
+    color = "red"
+  ) +
+  ggplot2::geom_hline(yintercept = 0) +
+  ggplot2::geom_vline(xintercept = 0, linetype = "dashed") +
+  ggplot2::facet_grid(variable ~ approach, scales = "free_y") +
+  labs(
+    title = "Gráfico de envelopamento",
+    subtitle = "Área cinza: 5-95° percentil dos placebos",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_bw()
+
+ggplot2::ggsave(file.path("figs", "LINHA_PLACEBO.png"), plot = envelopamento, width = 16, height = 20, bg = "white")
+
+
+placebo_significance <- final_results_placebo %>%
+  dplyr::filter(term >= 0, Iteracao != 'Original') %>% 
+  dplyr::mutate(significant = ifelse(conf.low > 0 | conf.high < 0, 1, 0)) %>%
+  dplyr::group_by(variable, approach) %>%
+  dplyr::summarise(
+    n_placebos = n(),
+    n_significant = sum(significant),
+    pct_significant = 100 * n_significant / n_placebos,
+    .groups = "drop"
+  ) 
+
+writexl::write_xlsx(x = placebo_significance, path = 'tables/placebo_significance.xlsx')
+
+
+# TESTANDO PRE TRENDS  ------------------------
+# TESTE DE WALD
+wald_results <- purrr::map_dfr(
+  vars_to_test,
+  ~ run_wald_tests(diddf = diddf, var = .x)
+) %>% 
+  tidyr::pivot_wider(names_from = 'Variavel', values_from = 'p_valor')
+
+writexl::write_xlsx(x = wald_results, path = 'tables/wald_results.xlsx')
+
+# CLEAN ENVIRONMENT (EXCEPT FOR FUNCTIONS SOURCED) ------------------------
+base::rm(list = setdiff(ls(), lsf.str()))
+

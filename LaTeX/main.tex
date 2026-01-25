@@ -20,6 +20,7 @@
 \usepackage{array}
 \usepackage{amsmath}
 \usepackage{amsfonts}
+\usepackage{float}  
 \usepackage{amsthm}
 \usepackage{scalefnt}
 \usepackage{url}
@@ -45,38 +46,35 @@
 
 \date{}
 \begin{document}
-	\title{On the aggregate effects of the payroll tax cut in Brazil: AAA}
+	\title{Para Onde Foram os Efeitos da Desoneração da Folha de Pagamento no Brasil?}
 
 \author{
 	Caio Matteucci de Andrade Lopes\thanks{Professor: Universidade Federal do Piauí (UFPI). ORCID: \href{https://orcid.org/0000-0002-1754-9062}{0000-0002-1754-9062}. Email: \href{mailto:caiomdealopes@gmail.com}{caiomdealopes@gmail.com}.} \\
-	Barbara\thanks{Mestranda: Universidade Federal do Piauí (UFPI). ORCID: \href{https://XXX}{XXX}.Email: \href{mailto:XXX@gmail.com}{XXX@gmail.com}.} \\
-	Gabriel\thanks{Mestrando: Universidade Federal do Piauí (UFPI). ORCID: \href{https://XXX}{XXX}. Email: \href{mailto:XXX@gmail.com}{XXX@gmail.com}.} \\
-	Leonildo\thanks{Mestrando: Universidade Federal do Piauí (UFPI). ORCID: \href{https://XXX}{XXX}. Email: \href{mailto:XXX@gmail.com}{XXX@gmail.com}.}
+	Gabriel Gaze Gonçalves Fontenele Gomes\thanks{Mestrando: Universidade Federal do Piauí (UFPI). ORCID: \href{https://XXX}{XXX}. Email: \href{mailto:gabrielgaze012@gmail.com}{gabrielgaze012@gmail.com}.} \\
 }	
 	\def \theforeigntitle{}
 	
 	\maketitle
 
 \selectlanguage{brazil}
-\begin{abstract}
+%\begin{abstract}
 
-		 Este artigo bla bla bla
 		 
-		\textbf{Classificação JEL}: Ver aqui. \\
-		\textbf {Palavras-chave}: e aqui.
-\end{abstract}
-\selectlanguage{english}
+%		\textbf{Classificação JEL}: Ver aqui. \\
+%		\textbf {Palavras-chave}: e aqui.
+%\end{abstract}
+%\selectlanguage{english}
 	
 	%{
 		
 		
-\begin{abstract}
-			This article bla bla in english.
-		\\ \\
+%\begin{abstract}
+
+%		\\ \\
 			 			 
-		\textbf{JEL classification:} see here. \\
-		\textbf {Keywords}: and here.
-\end{abstract}
+%		\textbf{JEL classification:} see here. \\
+%		\textbf {Keywords}: and here.
+%\end{abstract}
 
 		
 		
@@ -84,41 +82,686 @@
 		% ----------------------------------------------------------
 		% Introdução
 		% ----------------------------------------------------------
-		\section{Introduction}
+		\section{Introdução}
+		
+		
+		Nos últimos anos, o Brasil enfrentou níveis de desocupação historicamente altos, sobretudo após a recessão de 2015–2016. Segundo dados da Pesquisa Nacional por Amostra de
+		Domicílios Contínua (PNADC), a taxa de desemprego, que era de 7,4\% em 2012, subiu para
+		11,7\% em 2016 e atingiu 14,0\% em 2021. Apenas em 2023 o indicador retornou a níveis mais
+		baixos, chegando a 7,8\%, patamar ainda 0,4 pontos percentuais superior ao de 2012. Paralelamente, a informalidade manteve-se persistentemente elevada: em 2016, 39,1\% da população
+		ocupada estava em situação informal, percentual que permaneceu acima de 39\% na maior parte
+		do período entre 2016 e 2023. Essa elevada informalidade é preocupante, pois está associada
+		à precarização das condições de trabalho, à redução do acesso a direitos sociais e previden
+		ciários, além de limitar a arrecadação tributária em decorrência de evasões fiscais \citep{pellizzaro2024}. Consequentemente, contribui para a perpetuação das desigualdades sociais, dificulta o desenvolvimento econômico sustentável e fragiliza a proteção social dos trabalhadores.
+		
+		Tal cenário pode estar relacionado, ao menos em parte, ao elevado custo do trabalho
+		formal, derivado principalmente de um sistema tributário que incide fortemente sobre a folha
+		de pagamentos, encarecendo contratações com vínculo formal. De acordo com \citet{ansiliero2008}, a estrutura de encargos sociais e trabalhistas brasileira é especialmente complexa e onerosa. Estimativas amplamente citadas na literatura indicam que os custos associados à Consolidação das Leis do Trabalho (CLT) podem representar um acréscimo de até 102\% sobre o salário nominal do trabalhador, tornando a formalização particularmente custosa para as empresas \citep{Garcia2018}. Nessa perspectiva, compreender o impacto de políticas voltadas à redução do custo do trabalho formal é, portanto, crucial para enfrentar o desafio estrutural do desemprego.
+		
+		Nesse contexto, destaca-se a adoção da política de desoneração da folha de pagamentos
+		- instituída pela Medida Provisória nº 540/2011 e convertida na Lei nº 12.546/2011 -, implementada pelo governo brasileiro na última década com o propósito de estimular a formalização do emprego e mitigar os encargos tributários incidentes sobre os empregadores. A medida, aplicada a um número limitado de setores da economia, alterou a base de incidência da contribuição previdenciária patronal, que passou de uma alíquota de 20\% sobre a folha de pagamento para uma alíquota reduzida aplicada sobre a receita bruta, o que, de fato, resultou em uma redução na contribuição total à seguridade social como proporção da massa salarial nos setores selecionados \citep{Scherer2015}. Destaca-se que a aplicação seletiva gerou choques assimétricos entre setores tratados e não tratados, o que tem sido interpretado na literatura como uma oportunidade metodológica para a aplicação de estratégias de avaliação quase-experimentais, como o método de diferenças-em-diferenças, com forte potencial de identificação causal. 
+		
+		Apesar do potencial analítico da política, a literatura empírica ainda não apresenta consenso quanto aos seus efeitos. Enquanto \citet{Scherer2015} e
+		\citet{Souza2016} identificam impactos positivos e estatisticamente significativos da desoneração sobre o volume de empregos, outros estudos, como os de \citet{Garcia2018}, \citet{meyer2021} e \citet{docarmo2012}, apontam para
+		efeitos nulos ou estatisticamente insignificantes, tanto sobre o emprego quanto sobre os salários.
+		
+		Parte dessa divergência pode ser atribuída a limitações metodológicas: muitos estudos não consideram o padrão escalonado de adesão dos setores à política, que ocorreu em duas ondas - em 2012 e 2013 -, e tampouco avaliam se os efeitos se concentraram em subgrupos específicos de trabalhadores. Nesse sentido, a principal contribuição deste estudo é dupla. Primeiramente, emprega-se metodologias de diferenças em diferenças capazes de lidar com o tratamento escalonado, permitindo estimativas mais robustas e interpretáveis dos efeitos da política. Em segundo lugar, analisam-se os impactos sobre seis variáveis distintas relacionadas aos trabalhadores — benefícios por trabalhador, contribuição previdenciária por trabalhador, número de trabalhadores assalariados ligados e não ligados à produção, e salários desses dois grupos — com o objetivo de identificar quais categorias de trabalhadores, se houver, foram efetivamente beneficiadas pela desoneração da folha de pagamentos. Dessa forma, este trabalho oferece evidências detalhadas e robustas acerca dos efeitos da política sobre diferentes dimensões do mercado de trabalho formal no Brasil.
+
+		
+		Nesse sentido, para investigar os efeitos da política de desoneração da folha de pagamentos, este estudo adota uma abordagem quantitativa, utilizando dados da Pesquisa Industrial Anual - Empresa (PIA Empresa) para o período de 2007 a 2015. A análise concentra-se na estimativa dos efeitos médios da política sobre seis variáveis relacionadas aos trabalhadores, empregando quatro metodologias distintas para tratamento escalonado: Two-Way Fixed Effects (TWFE), \citet{Callaway2021}, \citet{Sun2021} e Extended TWFE (ETWFE).  
+		
+		Adicionalmente, são realizados testes de robustez para garantir a validade das estimativas, incluindo verificação das pré-tendências paralelas e testes de \textit{placebo treatment}. Os resultados indicam que a política não apresentou efeitos estatisticamente significativos sobre os diferentes grupos de trabalhadores analisados, embora tenha impactado negativamente a contribuição previdenciária por trabalhador, sugerindo uma redução nos custos para as empresas alvo. 
+		
+		Além desta introdução, o artigo está organizado da seguinte forma. A Seção~2 apresenta o referencial teórico e a revisão da literatura empírica sobre a desoneração da folha de pagamentos, discutindo seus principais mecanismos econômicos, os objetivos da política e os resultados encontrados em estudos anteriores, bem como as limitações metodológicas associadas às estratégias tradicionalmente empregadas para sua avaliação. A Seção~3 descreve a estratégia empírica adotada, detalhando a base de dados utilizada, a construção das variáveis e as metodologias de diferenças-em-diferenças empregadas para lidar com a adoção escalonada da política, incluindo os estimadores Two-Way Fixed Effects (TWFE), \citet{Callaway2021}, \citet{Sun2021} e Extended TWFE, além dos procedimentos de inferência e testes de robustez. A Seção~4 apresenta e discute os resultados empíricos, contemplando inicialmente a análise descritiva e gráfica dos dados, seguida da estimação dos efeitos médios da política sobre diferentes variáveis relacionadas aos trabalhadores, bem como a avaliação da robustez dos resultados por meio de testes de pré-tendências paralelas e placebos. Por fim, a Seção~5 encerra o artigo com as considerações finais, sintetizando os principais achados e discutindo suas implicações para o debate sobre políticas de redução do custo do trabalho formal no Brasil.
+		
+
 	
-		\textbf{citar com citep(final de paragrafo) e citet (meio de paragrafo)}
+
 		% ----------------------------------------------------------
 		% Capitulo de textual  
 		% ----------------------------------------------------------
-		\section{Related Work}
+		\section{Referencial teórico}
 		
+		\subsection{A desoneração da folha de pagamento}
+		
+		A tributação sobre a folha de pagamentos representa, nos estados modernos, uma das principais bases de financiamento das políticas sociais, como saúde e previdência. No entanto, no contexto brasileiro, essa forma de arrecadação tem sido objeto de críticas recorrentes, especialmente por seu papel na elevação do custo do trabalho formal. Desde os anos 1990, com o avanço do desemprego e da informalidade, cresceu a preocupação com a erosão da base de financiamento da Previdência Social, dada a redução da contribuição advinda do emprego formal \citep{ansiliero2008}.
+		
+		Esse cenário motivou diagnósticos que apontavam para a necessidade de diversificação das fontes de financiamento da seguridade social. A Emenda Constitucional nº 41/2003, ao alterar o artigo 195 da Constituição Federal, permitiu que parte da contribuição patronal sobre a folha de salários fosse substituída por uma contribuição sobre a receita ou faturamento das empresas. A mudança buscava aliviar o ônus tributário das firmas intensivas em trabalho, ainda que implicasse em desvantagem relativa para aquelas mais intensivas em capital \citep{ansiliero2008}.
+		
+		Em 2011, o governo brasileiro instituiu uma ampla política de desoneração da folha de pagamentos, inicialmente voltada para alguns setores industriais — como vestuário, calçados e tecnologia da informação —, e, em 2012, estendida a outros segmentos da indústria, do comércio e dos serviços. Conforme \citet{Scherer2015}, a medida teve como objetivo central reduzir o custo do trabalho formal, estimular a geração de empregos e reduzir os incentivos à informalidade.
+		
+		Além de seus objetivos econômicos, a política apresenta características que a tornam especialmente adequada para análise empírica: (i) provocou uma redução significativa nos custos com trabalho formal; e (ii) foi implementada de forma seletiva, atingindo apenas parte das firmas da economia \citep{Scherer2015}. Dessa forma, a política de desoneração da folha no Brasil constitui um caso particularmente interessante para estudos empíricos, com alto potencial de identificação de efeitos causais sobre o comportamento das firmas frente a mudanças nos preços relativos dos fatores de produção.
+		
+				
+		
+
+
+		\subsection{Abordagem padrão para avaliação de políticas públicas}
+		
+		De maneira inicial, poderia-se pensar que a estimativa do impacto da política de desoneração da folha de pagamentos poderia ser obtida simplesmente avaliando a evolução do emprego nos setores afetados ao longo do tempo. No entanto, essa abordagem é inadequada do ponto de vista causal, pois a variação observada no emprego reflete não apenas os efeitos da política, mas também a influência de diversos fatores concomitantes, como o ciclo econômico, choques setoriais específicos, mudanças tecnológicas e tendências estruturais pré-existentes. Dessa forma, uma comparação ingênua da evolução temporal do emprego nos setores tratados não permite isolar o efeito causal da política \citep{angrist2009}.
+		
+		Nessa perspectiva, o principal desafio na avaliação da política é que não é possível observar diretamente o resultado contrafactual - ou seja, o nível de emprego que os setores beneficiados pela desoneração teriam atingido caso a política não tivesse sido implementada - para compará-lo com o que realmente ocorreu. No arcabouço de resultados potenciais, esse parâmetro de interesse é chamado de efeito médio do tratamento sobre os tratados, conforme definido por \citet{imbens2009}:
+
+		
+\begin{equation*}
+	ATT = \mathbb{E}[Y^1 - Y^0 \mid D = 1]
+\end{equation*}
+		
+No contexto de pesquisas em que as unidades são observadas ao longo do tempo e apenas parte delas é exposta ao tratamento, pode-se utilizar as unidades não tratadas como grupo de comparação para a construção do contrafactual e empregar uma estratégia de diferenças em diferenças, que combina variações temporais e entre grupos para remover efeitos fixos não observáveis e choques temporais comuns \citep{angrist2009}.
+
+		
+		
+		\begin{equation}
+			DiD =
+			\left[
+			\mathbb{E}(Y \mid D = 1, Post) -
+			\mathbb{E}(Y \mid D = 1, Pre)
+			\right]
+			-
+			\left[
+			\mathbb{E}(Y \mid D = 0, Post) -
+			\mathbb{E}(Y \mid D = 0, Pre)
+			\right]
+		\end{equation}
+
+
+Nessa perspectiva, a principal hipótese do DiD é que na ausência de tratamento, a trajetória do emprego nos setores desonerados teria sido a mesma que a trajetória observada nos setores não desonerados, logo:
+
+\begin{equation*}
+	[E[Y^0|D = 1, Post] - [E[Y^0|D = 1, Pre]
+	= [E[Y^0|D = 0, Post] - [E[Y^0|D = 0, Pre]
+\end{equation*}
+
+Portanto:
+
+\begin{equation*}
+	\begin{split}
+		DiD
+		&=
+		\underbrace{
+			\left[
+			\mathbb{E}(Y^1 \mid D = 1, Post)
+			-
+			\mathbb{E}(Y^0 \mid D = 1, Post)
+			\right]
+		}_{\text{ATT}}
+		\\[0.3cm]
+		&\quad +
+		\underbrace{
+			\left[
+			\mathbb{E}(Y^0 \mid D = 1, Post)
+			-
+			\mathbb{E}(Y^0 \mid D = 1, Pre)
+			\right]
+			-
+			\left[
+			\mathbb{E}(Y^0 \mid D = 0, Post)
+			-
+			\mathbb{E}(Y^0 \mid D = 0, Pre)
+			\right]
+		}_{\text{viés de tendências não paralelas}}
+	\end{split}
+\end{equation*}
+
+\begin{equation*}
+	DiD = ATT + \text{viés de tendências não paralelas}
+\end{equation*}
+
+Assim, o estimador de diferenças em diferenças pode ser decomposto como a soma do efeito médio do tratamento sobre os tratados (ATT) e um termo de viés associado à eventual violação da hipótese de tendências paralelas. Nesse sentido, para que a estimativa seja causalmente válida, é necessário que essa hipótese seja satisfeita; ou seja, quando a trajetória contrafactual do resultado para os grupos tratado e controle seria a mesma na ausência do tratamento, o termo de viés se anula e o estimador de DiD identifica consistentemente o ATT \citep{angrist}.
+
+Além da necessidade de garantir a validade causal, um aspecto relevante da política de desoneração da folha de pagamentos é que nem todos os setores foram beneficiados simultaneamente. Enquanto alguns setores industriais receberam a desoneração em 2012, outros segmentos passaram a ser contemplados apenas em 2013, caracterizando um tratamento escalonado.
+
+A presença dessa particularidade impõe desafios adicionais para a aplicação de estimadores clássicos de diferenças em diferenças, uma vez que efeitos médios estimados podem ser contaminados por heterogeneidades temporais e efeitos dinâmicos do tratamento. Como destacado por \citet{Callaway2021}, \citet{Sun2021}, \citet{DeChaisemartin2020} e \citet{GoodmanBacon2021}, estimadores DiD tradicionais aplicados em cenários de tratamento escalonado podem gerar resultados enviesados quando os efeitos do tratamento são heterogêneos no tempo ou entre coortes de tratamento. 
+
+		
+		\subsection{Trabalhos relacionados}
+		
+		
+		De maneira geral, ainda não há consenso sobre os efeitos da desoneração da folha de pagamentos no Brasil. Os resultados empíricos são heterogêneos, variando conforme a metodologia adotada, o nível de agregação dos dados e o recorte temporal analisado. A maioria dos estudos concentra-se em verificar se a política gerou aumento no nível de emprego formal - objetivo explícito da medida -, mas poucos exploraram possíveis efeitos em subgrupos de empregados ou em pagamentos de previdência ou benefícios. Além disso, os trabalhos existentes geralmente aplicam metodologias de diferenças em diferenças clássicas, sem levar em conta possíveis heterogeneidades nos efeitos decorrentes do escalonamento temporal da implementação da política entre empresas. Nesse sentido, embora a literatura forneça importantes evidências sobre os impactos da política, ela deixa lacunas quanto à estimação precisa de efeitos dinâmicos e distribuídos no tempo, que podem ser capturados por abordagens \emph{staggered}, como as que serão adotadas neste estudo, oferecendo uma análise mais robusta e detalhada dos efeitos ao longo do período de implementação.
+
+		
+		
+		\citet{docarmo2012} foi uma das primeiras autoras a avaliar empiricamente os efeitos da desoneração da folha salarial no Brasil. Utilizando dados da PME/IBGE e a metodologia de diferenças-em-diferenças, o estudo comparou indivíduos empregados em setores inicialmente beneficiados pela política com trabalhadores de setores não desonerados. Os resultados indicaram que, no curto prazo, a política não teve efeitos estatisticamente significativos sobre a formalização do trabalho nem sobre a realocação setorial dos trabalhadores. A autora destaca como principais limitações a curta janela temporal analisada e o alto nível de agregação dos setores na base de dados.
+		
+		\citet{Dallava2014} analisou os efeitos da desoneração da folha de pagamentos sobre o emprego formal e o salário médio utilizando microdados da RAIS para os anos de 2011 e 2012, com metodologia de Diferenças-em-Diferenças (DD). O estudo agrupou os dados em “clusters de estabelecimentos” por município, CNAE e tipo de empresa, excluindo firmas do Simples Nacional, e controlou variáveis como idade média, escolaridade, tempo de emprego, proporção de trabalhadores permanentes e proporção de homens. Os resultados indicaram efeitos positivos e significativos apenas no setor de Informação e Comunicação, com impactos nulos ou negativos nos demais. A autora destaca como limitações a curta janela de análise e violação da hipótese de tendências paralelas entre os grupos.
+		
+		\citet{Scherer2015} avaliou os efeitos da desoneração da folha de pagamentos sobre emprego e salários no Brasil, com foco nos quatro setores inicialmente beneficiados em 2011. Utilizando dados da RAIS para os anos de 2010 a 2012 e uma estratégia de diferenças-em-diferenças com efeitos fixos por empresa, o autor comparou firmas não enquadradas no Simples Nacional (afetadas pela política) com empresas Simples (não afetadas).  A principal contribuição do trabalho está na análise em nível de firma, diferenciando os efeitos por setor e porte, e explorando variações tributárias para fins de identificação causal. Os resultados indicam efeitos positivos, porém modestos: entre as pequenas empresas tratadas, observou-se aumento de 14,4\% no emprego. O estudo reconhece limitações, como tendências pré-existentes divergentes entre os grupos de controle e de tratamento e o horizonte temporal curto da política, o que pode ter restringido decisões de investimento de longo prazo.
+		
+		\citet{Garcia2018} apontam limitações metodológicas em trabalhos anteriores que utilizaram duplas diferenças. Destacam que Dallava (2014) não controlou econometricamente diferenças intrínsecas entre subsetores da CNAE, limitando-se a análises gráficas, e que a ausência de dados em nível de firma dificultou comparações diretas. Quanto a \citet{Scherer2015}, \citet{Garcia2018} evidenciam violação da premissa de tendências paralelas, mostrada por testes de placebo temporal que indicaram diferenças prévias entre grupos de tratamento (não Simples) e controle (Simples), além da endogeneidade do grupo controle, pois empresas poderiam migrar do Simples para o regime normal para se beneficiar da desoneração, distorcendo os resultados. Para superar essas limitações, \citet{Garcia2018} adotaram a metodologia de triplas diferenças, comparando a evolução do emprego entre empresas não Simples e Simples, dentro e fora dos setores desonerados, validando o modelo com testes de placebo temporal. Os resultados indicam ausência de efeitos estatisticamente significativos da desoneração sobre o volume de empregos, tanto na amostra geral quanto nas análises por tamanho e região. Por fim concluem que, apesar da expressiva renúncia fiscal, a desoneração não teve impacto positivo robusto sobre a geração de empregos.
+		
+		Por fim, em estudo mais recente, \citet{Freitas2022} analisam os impactos da política de desoneração da folha de pagamentos sobre o emprego formal e a competitividade industrial no Brasil. Utilizando dados da RAIS (2009–2018) e da CNI, os autores aplicam um modelo de Diferenças em Diferenças com pareamento por escore de propensão (PSM-DID), complementado por estimadores de Triplas Diferenças (DDD). Os resultados indicam que a política teve efeitos positivos sobre o emprego formal nos anos iniciais da sua implementação — com impactos estimados de 1,12\% nos vínculos empregatícios em 2012 —, mas que esses efeitos se dissiparam gradualmente até 2018, em função da acomodação dos agentes e alterações nos critérios de elegibilidade setorial. Esses achados fornecem evidências claras de que os efeitos da política foram heterogêneos no tempo e concentrados nos anos iniciais, reforçando a necessidade de abordagens que capturem efeitos dinâmicos e escalonados ao longo do período de implementação. Nesse contexto, metodologias \emph{staggered} se mostram particularmente adequadas, justificando a escolha da estratégia adotada neste estudo para estimar de forma mais robusta os impactos temporais da desoneração.
+
 		
 				
 				% ---------------------------------------------------------------------------------
-		\section{Methodology}
+		\section{Metodologia}
+		
+O presente estudo possui caráter quantitativo, tendo como objetivo principal avaliar o impacto da política de desoneração da folha de pagamento sobre diferentes indicadores relacionados aos trabalhadores. Especificamente, busca-se identificar se a política atingiu seus objetivos em termos de benefícios médios por trabalhador, contribuições à previdência social, número de trabalhadores assalariados ligados e não ligados à produção, bem como os salários médios desses trabalhadores. Para isso, foram construídas variáveis derivadas a partir da tabela 7241 do Sistema IBGE de Recuperação Automática (SIDRA), proveniente da Pesquisa Industrial Anual – Empresa (PIA Empresa).
+
+Considerando que a adesão de setores à política foi escalonada ao longo do tempo, um modelo tradicional de diferenças-em-diferenças simples não seria adequado para estimar corretamente os efeitos causais da política. Diante disso, este trabalho emprega abordagens modernas que lidam explicitamente com tratamentos escalonados, incluindo \citet{Callaway2021}, \citet{Sun2021} e Extended TWFE (ETWFE). Tais metodologias permitem estimar efeitos heterogêneos entre coortes e ao longo do tempo, evitando problemas de contaminação entre grupos e pesos negativos característicos do Two way fixed effects tradicional.
+
+Além disso, a análise incorpora medidas de robustez para avaliar a validade das hipóteses subjacentes e a confiabilidade das estimativas obtidas. Nas subseções seguintes, cada metodologia adotada será detalhada, incluindo sua fundamentação teórica, especificação econométrica e forma de interpretação dos coeficientes.
 						
-		\subsection{Econometric Model}
 		
+\subsection{Modelo Two-Way Fixed Effects (TWFE)}
+
+A metodologia do TWFE é tradicionalmente motivada por uma equação linear em que a variável dependente é função de variáveis explicativas, efeitos específicos da unidade e efeitos específicos do tempo, assumindo a forma:
+
+\begin{equation}
+	Y_{it} = \beta \, \text{D}_{it} + \alpha_i + \gamma_t + \varepsilon_{it},
+\end{equation}
+
+onde $\text{D}_{it}$ é uma \textit{dummy} de tratamento que indica se a unidade $i$ recebeu o tratamento no período $t$ - de forma que $\beta$ representa a medida do efeito médio do tratamento (ATT); $\alpha_i$ controla os efeitos fixos da unidade (neste caso, setores da CNAE 2.0) e $\gamma_t$ controla os efeitos fixos de tempo (anos), removendo heterogeneidade não observada que é específica da unidade ou comum a todas as unidades em cada período \citep{mundlak1978}. 
+
+Destaca-se que essa metodologia amplamente utilizada em econometria aplicada. Entre 2010 e 2012, aproximadamente 19\% dos artigos publicados na \textit{American Economic Review} empregaram esta abordagem para estimar efeitos de tratamento \citep{DeChaisemartin2020}. Apesar disso, os resultados do ATT do TWFE são de difícil interpretação dada sua complexidade. Como descrito por \citet{GoodmanBacon2021}, o beta do TWFE pode ser entendido como uma soma ponderada de diversos estimadores DiD, em que os pesos dependem do \textit{timing} do tratamento, do tamanho dos grupos e da variância do tratamento:
+
+\[
+B_FE = \mathbb{E} \Bigg[ \sum_{(g,t) : D_{g,t} = 1} W_{g,t} \, \Delta_{g,t} \Bigg]
+\]
+
+onde $\Delta_{g,t}$ é o ATT médio no grupo $g$ e período $t$, e os pesos $W_{g,t}$ satisfazem $\sum W_{g,t} = 1$, mas podem assumir valores negativos. Isso ocorre porque o estimador $\hat{\beta}^{FE}$ pode utilizar, como comparação de controle, unidades que já foram tratadas em alguns períodos \citep{DeChaisemartin2020}. Nesse caso, parte do efeito do tratamento das unidades previamente tratadas é subtraído erroneamente na comparação, enviesando a estimativa do efeito causal médio e resultando em pesos negativos, sendo possível que $\hat{\beta}^{FE}$ seja negativo mesmo que todos os ATTs individuais sejam positivos. Adicionalmente, o TWFE é restritivo, assumindo um efeito de tratamento constante ao longo de todos os grupos e períodos. Caso os efeitos sejam heterogêneos entre os coortes, o estimador padrão pode gerar estimativas enviesadas ou médias ponderadas difíceis de interpretar \citep{Wooldridge2025}. 
+
+Portanto, o uso do TWFE identifica corretamente o efeito causal médio apenas sob condições de homogeneidade dos efeitos entre as unidades, ausência de efeitos dinâmicos nos coortes e respeito à hipótese de tendências paralelas. Quando essas condições não se verificam, outras alternativas devem ser adotadas \citep{Wooldridge2023}.
+
+Além da especificação estática do TWFE, é comum na literatura empregar regressões do tipo \textit{event study} estimadas por modelos de efeitos fixos bidirecionais. Nessa abordagem, o tratamento é parametrizado em termos do tempo relativo à adoção da política, permitindo estimar efeitos dinâmicos antes e depois do tratamento. Formalmente, o modelo pode ser representado por:
+
+\begin{equation}
+	Y_{it} = \sum_{k \neq -1} \beta_k \, \mathbb{1}(t - g_i = k) + \alpha_i + \gamma_t + \varepsilon_{it},
+\end{equation}
+
+onde $\mathbb{1}(t - g_i = k)$ são indicadores que capturam os períodos $k$ antes e após a adoção do tratamento pela unidade $i$, sendo o período $k=-1$ omitido como categoria de referência. Os parâmetros $\beta_k$ medem a diferença média do desfecho em relação ao período imediatamente anterior ao tratamento, enquanto $\alpha_i$ e $\gamma_t$ representam, respectivamente, efeitos fixos de unidade e de tempo. Apesar da parametrização dinâmica, o estudo de evento estimado via TWFE não corrige os problemas estruturais associados a esse estimador em contextos com tratamento escalonado e efeitos heterogêneos, uma vez que os coeficientes $\beta_k$ continuam sendo combinações ponderadas de múltiplos estimadores de diferenças-em-diferenças, podendo utilizar unidades já tratadas como grupo de controle para outras coortes. Essa característica pode gerar contaminação entre grupos e períodos, enviesando as estimativas na presença de heterogeneidade nos efeitos do tratamento ou efeitos dinâmicos distintos entre coortes \citep{DeChaisemartin2020}; \citep{Sun2021}.
+
+	
+		
+\subsection{Metodologia de Callaway e Sant’Anna}
+
+Em resposta aos problemas de identificação e interpretação dos estimadores de efeitos fixos bidirecionais TWFE em contextos de adoção escalonada do tratamento, \citet{Callaway2021} propõem uma estrutura semiparamétrica que permite identificar parâmetros causais bem definidos mesmo na presença de heterogeneidade dos efeitos do tratamento entre grupos e ao longo do tempo. O núcleo da metodologia consiste em separar a análise de diferenças-em-diferenças em três etapas distintas: (i) identificação de parâmetros causais desagregados e relevantes para a política pública; (ii) agregação desses parâmetros em medidas sumárias de interesse; e (iii) estimação e inferência sobre os parâmetros-alvo. 
+
+A unidade central de análise é definida a partir do período em que cada unidade passa a ser tratada pela primeira vez. Nesse sentido, $G_i \in \{2, \dots, T\}$ é o período inicial de tratamento da unidade $i$. Quando uma unidade não sofre tratamento, G = $\infty$. Por sua vez, $C_i$ é uma variável dummy indentificadora de unidades nunca tratadas. Nessa perspectiva, o parâmetro causal fundamental da metodologia é o efeito médio do tratamento para o grupo tratado no período $g$ avaliado no período $t$, denominado efeito médio do tratamento por grupo e tempo, definido como:
+
+\begin{equation}
+	ATT(g,t) = \mathbb{E}\left[ Y_t(g) - Y_t(0) \mid G_i = g \right], \quad \text{para } t \geq g,
+\end{equation}
+
+onde $Y_t(g)$ representa o resultado potencial do grupo g no período $t$ sob tratamento e $Y_t(0)$ o resultado potencial no mesmo período caso a unidade permanecesse não tratada. Tendo em vista a inexistência de $Y_t(0)$ na realidade, este valor precisa ser estimado. Para isso, o contrafactual $Y_t(0)$ é estimado a partir da esperança de unidades nunca tratadas ou ainda não tratadas. Essa escolha garante que, em todas as comparações de diferenças-em-diferenças utilizadas na identificação do ATT(g,t), o grupo de controle represente corretamente o comportamento contrafactual das unidades tratadas na ausência de tratamento. Nessa perspectiva, ao excluir unidades previamente tratadas de todos os grupos de controle, a metodologia elimina a contaminação entre coortes presente no TWFE quando existe uma adoção escalonada ao tratamento. 
+
+Adicionalmente, tendo em vista seu desenho desagregado, esse parâmetro permite analisar explicitamente a heterogeneidade dos efeitos do tratamento entre diferentes coortes de adoção ($g$) e ao longo do tempo ($t$), bem como efeitos dinâmicos associados ao tempo de exposição ao tratamento. Destaca-se que apesar dos avanços, a identificação de $ATT(g,t)$ ainda requer a imposição de condições relacionadas à ausência de antecipação do tratamento e à validade da hipótese de tendências paralelas. 
+
+Sob essas condições, \citet{Callaway2021} propõem três classes de estimadores para a identificação de \(ATT(g,t)\), cada uma baseada em estratégias distintas de correção para diferenças sistemáticas entre grupos tratados e de controle.
+
+O primeiro é o estimador por \textit{regressão de resultados}, que modela diretamente a evolução contrafactual do resultado para as unidades tratadas a partir da dinâmica observada no grupo de controle. A ideia central é estimar a expectativa condicional do resultado não tratado, \(\mathbb{E}[Y_t(0) \mid X, G]\), e usar essa previsão para calcular o efeito causal médio:
+
+\[
+\widehat{ATT}^{OR}(g,t) = \frac{1}{N_g} \sum_{i: G_i = g} \Big( Y_{it} - \hat{Y}_{it}(0) \Big),
+\]
+
+onde:
+\begin{itemize}
+	\item \(G_i = g\) indica que a unidade \(i\) pertence à coorte tratada no período \(g\);
+	\item \(N_g\) é o número de unidades na coorte \(g\);
+	\item \(Y_{it}\) é o resultado observado da unidade \(i\) no período \(t\);
+	\item \(\hat{Y}_{it}(0)\) é a previsão do resultado contrafactual caso a unidade não tivesse sido tratada, obtida a partir de um modelo de regressão sobre as unidades de controle (nunca tratadas ou ainda não tratadas em \(t\)) e, opcionalmente, sobre covariadas \(X_i\).
+\end{itemize}
+
+A consistência do estimador depende da correta especificação do modelo de regressão de resultados. Em outras palavras, \(\widehat{ATT}^{OR}(g,t)\) é consistente se o modelo utilizado para prever \(Y_t(0)\) captura corretamente a média condicional do resultado não tratado dado \(X\) e a coorte \(G\).
+
+
+O segundo é o estimador por \textit{ponderação pelo escore de propensão} (\textit{inverse probability weighting}), que repondera as observações do grupo de controle de forma a torná-las comparáveis às unidades tratadas em termos das covariadas observáveis \(X\). Esse método requer a correta especificação do escore de propensão generalizado, \(p_g(X) = P(G = g \mid X, G + C = 1)\), bem como a condição de sobreposição. Em particular, Callaway e Sant’Anna (2021) demonstram que nessa metodologia os parâmetros são pontualmente identificáveis sob uma hipótese de tendências paralelas condicionais à propensão a ser tratado, que pode ser expressa como:
+
+\begin{equation}
+	\mathbb{E}\left[ Y_t(0) - Y_{t-1}(0) \mid X, G_i = g \right]
+	=
+	\mathbb{E}\left[ Y_t(0) - Y_{t-1}(0) \mid X, C_i = 1 \right],
+\end{equation}
+
+onde $X$ representa um conjunto de covariadas observadas pré-tratamento que possuem influência direta na definição do grupo de tratamento de cada unidade. Uma característica importante dessa estrutura é a possibilidade de incorporar covariadas de forma flexível, permitindo que as trajetórias dos resultados na ausência do tratamento sejam paralelas apenas condicionalmente a $X$, o que é particularmente relevante em aplicações com grupos estruturalmente distintos.
+
+Por fim, os autores propõem o estimador \textit{duplamente robusto}, que combina a regressão de resultados e a ponderação pelo escore de propensão em uma única expressão. A principal vantagem desse estimador é que ele permanece consistente se ao menos um dos dois componentes - o modelo do escore de propensão ou o modelo da evolução contrafactual dos resultados - for corretamente especificado, oferecendo maior robustez à inferência empírica. Neste estudo, utiliza-se o estimador duplamente robusto devido a essa propriedade
+
+
+Somente após a estimação dos parâmetros desagregados \( ATT(g,t) \), a metodologia de \citet{Callaway2021} procede à agregação dos efeitos de tratamento, utilizando pesos explicitamente definidos e não negativos. Uma forma particularmente relevante de agregação consiste em combinar os efeitos por coorte, mantendo a visualização do efeito ao longo do tempo desde a adoção do tratamento, isto é, em função do tempo de exposição \( e = t - g \).
+
+Nesse caso, o parâmetro agregado é definido como:
+\[
+\theta(e) = \sum_{g : g + e \leq T} \omega_g(e) \cdot ATT(g, g+e),
+\]
+onde \( \theta(e) \) representa o efeito médio do tratamento após \( e \) períodos de exposição, agregando-se todas as coortes que já foram tratadas há pelo menos \( e \) períodos.
+
+Os pesos \( \omega_g(e) \) são dados por:
+\[
+\omega_g(e) =
+\frac{P(G = g \mid G + e \leq T)}
+{\sum_{g' : g' + e \leq T} P(G = g')},
+\]
+satisfazendo \( \omega_g(e) \geq 0 \) e \( \sum_g \omega_g(e) = 1 \).
+
+Esses pesos refletem a participação relativa de cada coorte elegível na população tratada e garantem que a agregação seja uma média convexa dos \( ATT(g,t) \), evitando os pesos negativos e a contaminação entre grupos que caracterizam os estimadores TWFE em contextos de adoção escalonada.
+
+A inferência é conduzida por meio de um procedimento de \textit{bootstrap} multiplicador, que permite a construção de bandas de confiança simultâneas para todo o conjunto dos parâmetros $ATT(g,t)$. Diferentemente de intervalos de confiança pontuais, essas bandas levam em conta a dependência entre as estimativas em diferentes grupos e períodos, sendo mais adequadas para a visualização da incerteza associada ao perfil dinâmico dos efeitos.
+
+Apesar das vantagens sobre o estimador TWFE, a abordagem de \citet{Callaway2021} apresenta algumas limitações importantes. Primeiro, a escolha do grupo de comparação é crucial: unidades "nunca tratadas" podem ser escassas ou estruturalmente diferentes das tratadas, enquanto unidades "ainda não tratadas" impedem a identificação do efeito para o último coorte a receber o tratamento.  Segundo, em comparação a métodos baseados em regressão, a metodologia pode ser menos eficiente em painéis desbalanceados ou quando erros idiossincráticos não são homoscedásticos \citep{Wooldridge2025}. Terceiro, embora o \textit{bootstrap} multiplicador forneça inferência simultânea conveniente, sua validade depende de um número suficientemente grande de clusters, podendo ser limitada em amostras com poucos clusters. Por fim, por não ser especificada como uma regressão, a metodologia de Callaway e Sant'ana pode não ser tão familiar para pesquisadores, tornando-se menos conveniente para interpretação \citep{Sun2021}.
+
+No presente estudo, a metodologia de \citet{Callaway2021} foi aplicada utilizando apenas unidades nunca tratadas como grupo de controle, sem inclusão de covariadas. Dessa forma, a identificação dos parâmetros \(ATT(g,t)\) repousa sobre a hipótese de tendências paralelas incondicionais entre os grupos tratados e o grupo de controle.  
+
+A análise empírica será conduzida em duas etapas principais. Primeiro, serão estimados os efeitos desagregados \(ATT(g,t)\) para cada coorte \(g\) e período \(t\), capturando a heterogeneidade dos efeitos do tratamento ao longo do tempo e entre grupos de adoção distintos. Em seguida, esses efeitos desagregados serão agregados por ano, utilizando pesos não negativos \(\omega_g(e)\) que refletem a participação relativa de cada coorte na população tratada, permitindo a visualização dos efeitos médios do tratamento ao longo do tempo de exposição \(e = t-g\).  
+
+Ressalta-se que, por não terem sido incluídas covariadas \(X\) no modelo, a identificação do efeito médio agregado assume que as tendências paralelas incondicionais se sustentam. Consequentemente, a validade dessa hipótese deverá ser testada em análises complementares. A abordagem adotada garante, no entanto, que a agregação dos efeitos evita a contaminação entre coortes e os problemas de pesos negativos característicos do estimador TWFE em contextos de adoção escalonada.
+
+		
+		\subsection{Metodologia de Sun e Abraham}
+		
+		Assim como em \citet{Callaway2021}, \citet{Sun2021} também propõem uma metodologia que corrige os problemas citados dos estimadores TWFE em cenários de adoção escalonada do tratamento, eliminando pesos negativos e permitindo uma agregação ponderada de efeitos por coorte e tempo relativo. No entanto, existem diferenças importantes entre as abordagens. Primeiro, \citet{Sun2021} utilizam apenas unidades nunca tratadas como grupo de controle; caso não exista tal grupo, o método recorre à última coorte tratada para estimar efeitos anteriores. Segundo, a metodologia pode ser expressa como uma regressão padrão de painel, facilitando a implementação em softwares econométricos e interpretação. Por fim, o método não inclui covariáveis variantes no tempo, de modo que a hipótese de tendências paralelas condicionais não pode ser modelada.
+		
+		Nessa perspectiva, a estratégia de \citet{Sun2021} pode ser resumida em três etapas que serão adotadas neste trabalho. Inicialmente, estimam-se os efeitos de tratamento por coorte e tempo relativo a partir da seguinte especificação de regressão:
+		
+		\begin{equation}
+			Y_{i,t} = \alpha_i + \lambda_t + \sum_{e \notin C} \sum_{\ell \neq -1} \delta_{e,\ell} \big( \mathbf{1}\{E_i = e\} \cdot D_{i,t}^\ell \big) + \varepsilon_{i,t},
+		\end{equation}
+		
+		onde $\alpha_i$ e $\lambda_t$ são efeitos fixos de unidade e tempo; $\mathbf{1}\{E_i = e\}$ indica se a unidade $i$ pertence à coorte $e$; $D_{i,t}^\ell$ indica se a unidade $i$ está no período relativo $\ell$ desde o tratamento; e $\delta_{e,\ell}$ estima o efeito médio condicional da coorte $e$ no tempo relativo $\ell$, também chamado de $CATT_{e,\ell}$. Destaca-se que o período $\ell=-1$ é omitido como referência temporal para evitar colinearidade.
+		
+No segundo passo, o método estima os pesos de ponderação $w_{e,\ell}$ que serão utilizados para agregar os efeitos heterogêneos $\hat{\delta}_{e,\ell}$ obtidos no Passo 1. Estes pesos são fundamentais para assegurar que o estimador final $\hat{v}_g$ represente uma média convexa e interpretável dos efeitos causais.
+
+A ponderação proposta por \citet{Sun2021} baseia-se na proporção amostral de cada coorte dentro do conjunto de observações comparáveis para um dado horizonte temporal $\ell$. Formalmente, para cada tempo relativo $\ell$ e coorte $e$, o peso é dado pela probabilidade condicional:
+
+\begin{equation}
+	w_{e,\ell} = \Pr\{E_i = e \mid E_i \in \mathcal{I}_\ell\},
+	\label{eq:peso_populacional}
+\end{equation}
+
+onde $\mathcal{I}_\ell \equiv [-\ell,\; T-\ell]$ define o intervalo de tempos relativos que inclui todas as observações potencialmente utilizáveis na estimação do efeito no horizonte $\ell$. 
+
+A intuição por trás desta definição é a seguinte: para estimar consistentemente o $CATT_{e,\ell}$ via um estimador de diferenças-em-diferenças, são necessárias observações de unidades que:
+\begin{enumerate}
+	\item pertençam à própria coorte $e$ e estejam no tempo relativo $\ell$ (período pós-tratamento de interesse); ou
+	\item pertençam a outras coortes (grupos de controle) que, no mesmo calendário, estejam em um tempo relativo contido em $\mathcal{I}_\ell$ -- o que inclui períodos pré-tratamento ($\ell'<0$) e/ou pós-tratamento ($\ell' \ge 0$) ainda não contaminados para essas coortes.
+\end{enumerate}
+
+Portanto, o conjunto $\mathcal{I}_\ell$ representa a janela de comparabilidade no espaço do tempo relativo. A probabilidade condicional em \eqref{eq:peso_populacional} mede, então, a importância relativa da coorte $e$ nessa janela de comparabilidade: coortes com maior representatividade amostral dentro de $\mathcal{I}_\ell$ receberão maior peso na agregação do efeito no horizonte $\ell$.
+
+	Por fim, no terceiro passo, os efeitos agregados por tempo de evento são obtidos a partir de médias ponderadas:
+		
+		\begin{equation}
+			\hat{v}_g = \frac{1}{|g|} \sum_{\ell \in g} \sum_e \delta_{e,\ell} \cdot \hat{w}_{e,\ell},
+		\end{equation}
+		
+		onde a soma sobre $\ell \in g$ considera todos os tempos relativos de interesse e a normalização final $1/|g|$ ajusta pelo número de elementos em $g$. Sob a hipótese de tendências paralelas e ausência de antecipação do tratamento, $\hat{v}_g$ é uma média ponderada consistente para os $ATT_{g,t}$ calculados.
+		
+		Apesar da simplicidade e interpretabilidade, o método apresenta limitações: a metodologia não permite ajustar para covariáveis no tempo, restringindo a aplicação quando tendências paralelas condicionais são relevantes. Adicionalmente, a inferência concentra-se em intervalos de confiança pontuais, sem considerar explicitamente múltiplos testes ao longo da trajetória dos efeitos, diferentemente da abordagem de \citet{Callaway2021}, que utiliza \textit{bootstrap} para construir bandas simultâneas. Além disso, em termos de eficiência, a inclusão de indicadores pré-tratamento (\textit{leads}) pode gerar regressões redundantes, aumentando a variância em relação a estimadores lags only \citep{Wooldridge2025}. Por fim, o método concentra-se na agregação baseada no tempo de evento, limitando a exploração de outros esquemas de heterogeneidade, como variações por coorte ou períodos específicos \citep{Callaway2021}.
+		
+		
+		
+		\subsection{Extended Two-Way Fixed Effects (ETWFE)}
+		
+		O ETWFE é uma extensão do modelo clássico TWFE que permite capturar heterogeneidade total nos efeitos de tratamento entre coortes e ao longo do tempo. Diferentemente das abordagens de \citet{Callaway2021} e \citet{Sun2021}, o ETWFE não depende da definição de grupos de comparação nem de agregações por coorte ou tempo relativo, podendo ser especificado como uma regressão saturada que inclui interações completas de coorte por período \citep{Wooldridge2023}. A forma geral do modelo é:
+		
+		\begin{equation}
+			Y_{it} = \alpha_i + \lambda_t + \sum_{g \neq U} \sum_{t} \beta_{gt} \cdot \mathbf{1}\{G_i = g\} \cdot \mathbf{1}\{T = t\} \cdot D_{it} + \varepsilon_{it},
+		\end{equation}
+		
+		onde:
+		\begin{itemize}
+			\item $\alpha_i$ e $\lambda_t$ são os efeitos fixos de unidade e tempo;
+			\item $G_i$ representa a coorte da unidade $i$;
+			\item $B_{gt} = \beta_{gt}$ é o efeito do tratamento para a coorte $g$ no período $t$;
+			\item $D_{it}$ é uma variável dummy que indica se a unidade $i$ está sob tratamento no período $t$;
+			\item $U$ é o grupo de referência omitido para evitar colinearidade.
+		\end{itemize}
+		
+		Nesta especificação, cada coorte em cada período possui seu próprio coeficiente de tratamento, permitindo que o modelo capture efeitos heterogêneos de maneira explícita e flexível \citep{Wooldridge2025}. Nessa perspectiva, o efeito médio do tratamento sobre as unidades tratadas ($ATT_{simple}$) é obtido como a média ponderada dos coeficientes $\hat{\beta}_{G_i,t}$ para todas as observações tratadas:
+		
+		\begin{equation}
+			\widehat{ATT}_{simple} = \frac{1}{N_{tratado}} \sum_{i=1}^{N} \sum_{t=1}^{T} \mathbf{1}\{D_{it}=1\} \cdot \hat{\beta}_{G_i,t},
+		\end{equation}
+		
+		onde $N_{tratado}$ é o número total de observações tratadas. Dessa forma, o $\widehat{ATT}_{simple}$ corresponde à média dos efeitos específicos de coorte e período sobre todas as unidades que receberam o tratamento, preservando a heterogeneidade observada nos dados.
+		
+		Segundo \citet{Wooldridge2025}, o ETWFE apresenta vantagens em relação aos estimadores de \citet{Callaway2021} e \citet{Sun2021}, incluindo:
+		\begin{itemize}
+			\item Flexibilidade máxima: captura efeitos heterogêneos para todas as coortes e períodos sem necessidade de definir janelas de comparação;
+			\item Simplicidade conceitual: pode ser implementado como uma regressão saturada tradicional, com interpretação direta de cada coeficiente de coorte por período;
+			\item Eficiência: utiliza toda a informação disponível no painel, semelhante a estimadores GLS ou pooled OLS, tornando-o consistente sob suposições clássicas de linearidade condicional, tendências paralelas e ausência de antecipação do tratamento.
+		\end{itemize}
+		
+		
+		\subsection{Testes de robustez}
+		
+		
+		Para garantir a validade das estimativas de diferenças em diferenças, foram realizados testes de robustez focados em verificar a hipótese de tendências paralelas e em avaliar a possibilidade de efeitos espúrios através de placebos temporais.
+		
+		\subsubsection{Teste de Pré-Tendências}
+		
+A premissa de tendências paralelas é fundamental para a interpretação causal dos estimadores de diferenças em diferenças (DiD) \citep{angrist2009}. Para avaliá-la, foram realizados testes de pré-tendência em todos os modelos estimados verificando se os coeficientes correspondentes aos períodos anteriores ao início do tratamento (\emph{leads}) são estatisticamente diferentes de zero. Na ausência de pré-tendências distintas, espera-se que esses coeficientes sejam nulos, indicando que a trajetória do resultado para os grupos tratado e controle era paralela antes da implementação da política \citep{Borusyak2024}.
+
+Para formalizar o teste, todos os modelos foram estimados com indicadores para cada período relativo ao início do tratamento e aplicou-se um \emph{teste de Wald conjunto} para todos os coeficientes de pré-tratamento. Este teste avalia a hipótese nula de que todos os coeficientes de pré-tratamento são simultaneamente iguais a zero, considerando a covariância entre eles e permitindo inferência robusta a heterocedasticidade e clusterização. A não rejeição da hipótese nula fornece evidência de que não existem divergências sistemáticas entre os grupos antes do tratamento, garantindo que a interpretação causal do DiD seja válida \citep{Borusyak2024}.
+
+\subsection*{Testes de Placebo}
+
+Como teste adicional de robustez, foram realizados testes de placebo do tipo \emph{placebo treatment test}, seguindo a abordagem discutida por \citep{Eggers2024}. De acordo com os autores, em estudos observacionais, testes de placebo consistem em análises auxiliares nas quais o pesquisador investiga a existência de associações que, sob a validade das hipóteses do desenho empírico, deveriam estar ausentes, mas que poderiam emergir caso tais hipóteses fossem violadas. Assim, o teste de placebo não tem como objetivo avaliar a plausibilidade das premissas subjacentes à estratégia de identificação adotada.
+
+Segundo \citet{Eggers2024}, um teste de placebo é informativo quando satisfaz duas condições centrais. A primeira é a condição de \emph{No Average Treatment Effect} (NATE), segundo a qual o tratamento placebo não deve possuir efeito causal médio sobre o resultado de interesse. A segunda é a condição de \emph{Linked Violation of Bias Assumptions} (LVBA), que requer que eventuais fontes de viés presentes na análise principal também se manifestem na análise placebo. Com base nesses princípios, optou-se por implementar um teste de placebo por meio da randomização do tratamento entre os setores econômicos, preservando a estrutura temporal e institucional da política de desoneração da folha de pagamentos. Em particular, manteve-se a mesma proporção observada de setores tratados em cada coorte real de implementação da política — aproximadamente 40\% dos setores tratados em 2012 e 76\% em 2013 — bem como os mesmos períodos pré e pós-política e as mesmas variáveis de resultado. Esse processo de randomização foi repetido 1000 vezes. Para cada iteração, foram estimados os modelos de TWFE, \citet{Callaway2021}, \citet{Sun2021} e ETWFE \citep{Wooldridge2025}, obtendo-se os coeficientes de placebo associados ao tratamento.
+
+Para avaliar os resultados desse exercício, foi calculada a proporção de coeficientes placebo com módulo de valor absoluto maior ou igual ao coeficiente estimado no tratamento real. Esse procedimento permite avaliar quão provável seria observar um efeito de magnitude semelhante ao estimado caso o tratamento fosse atribuído aleatoriamente, sob a hipótese nula de ausência de efeito causal médio.
+
+Adicionalmente, analisou-se a fração das simulações placebo que resultaram em coeficientes estatisticamente significativos aos níveis convencionais. Conforme discutido por \citet{Eggers2024}, uma elevada incidência de significância nos placebos constitui evidência de que o estimador pode estar capturando padrões espúrios associados a tendências pré-existentes ou a viés de seleção não observado, violando a condição de \emph{Linked Violation of Bias Assumptions} e comprometendo a interpretação causal dos resultados principais.
+
+
+		
+		
+\subsection{Dados}
+
+As variáveis dependentes (\textit{Y}) utilizadas neste estudo foram coletadas por meio da tabela 7241 do Sistema IBGE de Recuperação Automática (SIDRA), que disponibiliza informações provenientes da \textit{Pesquisa Industrial Anual – Empresa} (PIA Empresa). A PIA Empresa tem por objetivo identificar as características estruturais básicas do segmento empresarial da atividade industrial no Brasil e suas transformações ao longo do tempo, por meio de levantamentos anuais baseados em uma amostra estratificada de empresas industriais em situação ativa no \textit{Cadastro Central de Empresas} (CEMPRE). A pesquisa abrange empresas sediadas em território nacional, organizadas juridicamente como entidades empresariais, com atividades principais compreendidas entre indústrias extrativas e indústrias de transformação e que possuam ao menos uma pessoa ocupada.
+
+As informações são disponibilizadas por atividade econômica segundo a \textit{Classificação Nacional de Atividades Econômicas} (CNAE 2.0). Neste estudo, utilizam-se os quatro primeiros dígitos da CNAE como identificador das unidades de análise, o que permite uma análise setorial relativamente desagregada. O período de análise, por sua vez, abrange os anos de 2007 a 2015, de forma a incluir anos anteriores e posteriores à implementação da política de desoneração da folha de pagamento. A Tabela~\ref{tab:variables} apresenta as variáveis originais extraídas da tabela 7241 do SIDRA, bem como suas respectivas descrições e unidades de medida.
+
+\begin{table}[H]
+	\centering
+	\caption{Variáveis utilizadas da tabela 7241 do SIDRA}
+	\label{tab:variables}
+	\begin{tabular}{|l|p{8cm}|l|}
+		\hline
+		\textbf{Nome} & \textbf{Descrição} & \textbf{Medida} \\
+		\hline
+		FRM       & Número de empresas                                           & Unidades      \\
+		\hline
+		POEBC     & Pessoal ocupado assalariado ligado à produção               & Pessoas       \\
+		\hline
+		POEWC     & Pessoal ocupado assalariado não ligado à produção           & Pessoas       \\
+		\hline
+		SALBC     & Salários, retiradas e outras remunerações de pessoal assalariado ligado à produção & Mil Reais \\
+		\hline
+		SALWC     & Salários, retiradas e outras remunerações de pessoal assalariado não ligado à produção & Mil Reais \\
+		\hline
+		PREV\_SOC & Gastos com pessoal – contribuições para a previdência social & Mil Reais \\
+		\hline
+		GBE       & Gastos com pessoal – benefícios concedidos aos empregados  & Mil Reais \\
+		\hline
+		\multicolumn{3}{l}{\footnotesize \textit{Fonte:} Elaborado pelo autor.} \\
+	\end{tabular}
+\end{table}
+
+Já os setores contemplados pela política de desoneração da folha de pagamento foram identificados com base nas estimativas de renúncia fiscal publicadas pela \citet{desoneracao2019}. Os anos em que cada setor passou a ser contemplado pela política, segundo a CNAE 2.0 a quatro dígitos, encontram-se detalhados no apêncide A deste trabalho. Após a mesclagem das bases de dados da PIA Empresa com as informações sobre o tratamento, procedeu-se à construção de um painel curto balanceado. Para tanto, setores que apresentavam informações ausentes em algum período da amostra foram excluídos da análise. Assim, o banco de dados final é composto por 2.133 observações, correspondentes a 237 setores ao longo do período analisado.
+
+Por fim, a partir das variáveis originais, foram construídas medidas derivadas que permitem captar distintos canais de transmissão dos efeitos da desoneração da folha de pagamento. Tais medidas foram utilizadas como desfechos nos modelos econométricos apresentados neste estudo e são descritas na Tabela~\ref{tab:variables_derivadas}.
+
+\begin{table}[H]
+	\centering
+	\caption{Variáveis derivadas utilizadas a partir da tabela 7241 do SIDRA}
+	\label{tab:variables_derivadas}
+	\begin{tabular}{|l|p{6cm}|p{6cm}|}
+		\hline
+		\textbf{Nome} & \textbf{Descrição} & \textbf{Definição} \\
+		\hline
+		SAL\_pertrabBC 
+		& Salário médio por trabalhador assalariado ligado à produção 
+		& $\text{SALBC} / \text{POEBC}$ \\
+		\hline
+		SAL\_pertrabWC 
+		& Salário médio por trabalhador assalariado não ligado à produção 
+		& $\text{SALWC} / \text{POEWC}$ \\
+		\hline
+		BEN\_pertrab 
+		& Benefícios médios concedidos por trabalhador 
+		& $\text{GBE} / (\text{POEBC} + \text{POEWC})$ \\
+		\hline
+		PREVSOC\_pertrab 
+		& Contribuição média à previdência social por trabalhador 
+		& $\text{PREV\_SOC} / (\text{POEBC} + \text{POEWC})$ \\
+		\hline
+		POEWC\_perfirm  
+		& Número médio de trabalhadores não ligados à produção por firma 
+		& $\text{POEWC} / \text{FRM}$ \\
+		\hline
+		POEBC\_perfirm 
+		& Número médio de trabalhadores ligados à produção por firma 
+		& $\text{POEBC} / \text{FRM}$ \\
+		\hline
+		\multicolumn{3}{l}{\footnotesize \textit{Fonte:} Elaborado pelo autor.} \\
+	\end{tabular}
+
+\end{table}
+
+		 
+		
+		
+		
+		\section{Resultados}
+		
+		\subsection{Estatísticas descritivas}
+		
+
+		
+\begin{table}[H]
+	\centering
+	\caption{Estatísticas descritivas do tratamento por período}
+	\label{tab:estat_desc_trat}
+	\begin{tabular}{lcccc} % alinhamento: l = esquerda, c = centralizado
+		\hline
+		\textbf{Ano} & \textbf{Média} & \textbf{Desv. padrão} & \textbf{Tratados} & \textbf{Não tratados} \\
+		\hline
+		Total acumulado & 0,302 & 0,459 & 644 & 1489 \\
+		Períodos anteriores a 2012 & 0 & 0 & 0 & 237 \\
+		2012 & 0,414 & 0,494 & 98 & 139 \\
+		Períodos posteriores a 2013 & 0,768 & 0,423 & 182 & 55 \\
+		\hline
+		\multicolumn{5}{l}{\footnotesize \textit{Fonte:} Elaborado pelo autor a partir de dados da \citet{desoneracao2019}} \\
+	\end{tabular}
+\end{table}
+
+		
+		A Tabela~\ref{tab:estat_desc_trat} apresenta as estatísticas descritivas do tratamento por período, permitindo visualizar a distribuição dos setores que foram afetados pela política ao longo do tempo. De maneira geral, das 2.133 observações, 30,2\% correspondem a unidades que sofreram tratamento. Observa-se também que, considerando o total acumulado, foram analisados 237 setores, dos quais 182 foram tratados em algum momento e 55 não tratados. Nos períodos anteriores a 2012, nenhum setor foi submetido à política, evidenciando que a intervenção teve início apenas a partir desse ano, em que 98 setores foram tratados, representando aproximadamente 41,3\% do total de setores ativos naquele período, como ilustrado na figura~\ref{graf:numero_setores}. Já nos períodos posteriores a 2013, 84 setores adicionais passaram a ser tratados, elevando o percentual de setores tratados para cerca de 76,8\%, conforme também indicado no mesmo gráfico. Esses dados sugerem que a política teve expansão significativa após 2012, concentrando inicialmente o tratamento em menos da metade dos setores ativos e alcançando a maioria deles nos ano seguinte.
+		
+		
+		
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{NÚMERO DE SETORES POR ANO DE TRATAMENTO.png}
+	\caption{Número de setores por ano de tratamento da política}
+	\label{graf:numero_setores}
+	
+\end{figure}
+		
+		
+Na figura~\ref{graf:boxplot} são apresentados os boxplots das variáveis em análise no período pré-tratamento, permitindo avaliar visualmente diferenças e semelhanças entre os grupos de tratamento. A linha preta central indica a mediana, o ponto preto representa a média, a largura da caixa indica a variabilidade dos dados, e os "bigodes" correspondem aproximadamente aos percentis 5\% e 95\% dos dados.
+
+Observa-se que, para o benefício por trabalhador, o grupo tratado em 2012 apresenta mediana e média claramente inferiores ao grupo de 2013, enquanto o grupo não tratado possui os maiores valores centrais. No caso do número de trabalhadores ligados à produção por firma, as medianas são semelhantes entre os grupos, mas as médias diferem devido à presença de valores extremos, sendo a menor do grupo 2012 e a maior do grupo 2013. Para o número de trabalhadores não ligados à produção, as medianas dos grupos tratados são próximas, enquanto o grupo não tratado apresenta medianas maiores. A previdência social por trabalhador mostra o grupo não tratado com maior mediana e o grupo 2012 com menor. Já o salário por trabalhador não ligado à produção evidencia mediana menor para o grupo 2012, enquanto 2013 e não tratados apresentam valores centrais semelhantes. Por fim, o salário por trabalhador ligado à produção apresenta medianas muito próximas entre todos os grupos. 
+
+A clara diferença nas características dos grupos indica que os setores-alvo da política não foram selecionados de forma aleatória, mas sim por critérios planejados. Considerando a forte heterogeneidade de características entre os grupos de tratamento, evidencia-se também a necessidade de adotar uma estratégia de análise de impacto que leve em conta o escalonamento da política para garantir que as comparações entre setores tratados sejam consistentes.
+
+		
+		
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{BOXPLOT.png}
+	\caption{Características dos setores}
+	\label{graf:boxplot}
+\end{figure}
+		
+Dando sequência à análise visual dos grupos, os gráficos de linhas apresentados na figura~\ref{graf:setores_ano} permitem observar as tendências das variáveis dependentes ao longo do tempo para os três grupos de setores analisados. Cada gráfico inclui duas linhas verticais tracejadas, correspondentes aos anos de 2012 e 2013, momentos em que os grupos passaram a ser tratados. Esses pontos de corte são essenciais para identificar possíveis alterações nas tendências das variáveis associadas à implementação da política.
+
+Percebe-se que algumas variáveis, como  benefícios por trabalhador, salário por trabalhador ligado à produção e salário por trabalhador não ligado à produção, é possível perceber a existência de tendências paralelas entre os grupos ao longo do período pré-tratamento. Entretanto, mesmo após os anos de corte, não se observam mudanças claras nas inclinações das linhas, indicando que a política não teve efeito visível nessas dimensões.  
+
+No caso de número de funcionários ligados à produção por firma e número de funcionários não ligados à produção por firma, as tendências paralelas não se configuram visualmente. Para \textit{POEBC\_PERFIRM}, apenas o grupo não tratado e o grupo 2012 parecem ter tendências paralelas antes da intervenção, sem efeito aparente depois. Já para \textit{POEWC\_PERFIRM}, não se observa tendência paralela entre nenhum dos grupos.  
+
+Por último, o gráfico de previdência social por trabalhador destaca-se dos demais. Tanto para o coorte 2012 quanto para o coorte 2013, a variável apresentava tendência paralela antes do tratamento, mas sofre uma queda brusca logo após a implementação da política, fornecendo evidência visual consistente de que a desoneração da folha teve efeito sobre a previdência social por trabalhador. Esse padrão dá indícios de que, ao contrário das demais variáveis, a política alterou de fato a trajetória dos custos da previdência social por trabalhador.
+
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\textwidth]{TENDÊNCIAS.png}
+			\caption{Número de setores por ano de tratamento da política}
+			\label{graf:setores_ano}
+		\end{figure}
+		 
+		
+		
+		
+		\subsection{Principais resultados e discussão}
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.95\textwidth]{ATTS.png}
+			\caption{Resultados}
+			\label{graf:resultados}
+		\end{figure}
+		
+		
+		
+		
+		Os gráficos da figura~\ref{graf:resultados} apresentam os resultados das quatro metodologias adotadas neste trabalho - \citet{Callaway2021}, ETWFE, \citet{Sun2021} e TWFE - para as seis variáveis em análise, mostrando os efeitos médios sobre os tratados (ATTs) nos períodos que vão de seis períodos antes (-6) até três períodos após (+3) a implementação da política, acompanhados de seus respectivos intervalos de confiança. Cada gráfico inclui uma linha preta horizontal na altura zero, indicando a ausência de efeito, de modo que os ATTs cujos intervalos de confiança cruzam essa linha podem ser interpretados como estatisticamente não significativos, e uma linha vertical vermelha marca o período zero, correspondente ao início da política, facilitando a visualização dos efeitos imediatamente posteriores à intervenção.
+		
+		 De maneira inicial, observa-se que os ATTs pré-política são estatisticamente não significativos em todas as metodologias adotadas e para todas as variáveis analisadas. Esse resultado é consistente com a hipótese de tendências paralelas entre os grupos de tratamento e controle, indicando que, antes da política, os setores que seriam tratados e os que não seriam tratados apresentavam trajetórias semelhantes. 
+		
+Observa-se também que todos os coeficientes pós-implementação da política para \texttt{PREV\_SOC\_PER\_TRAB} são negativos e estatisticamente significativos, indicando impacto negativo da desoneração da folha de pagamentos sobre a previdência por trabalhador . A Tabela~\ref{tab:prevsoc_coeff} apresenta os valores estimados pelos quatro métodos adotados ao longo dos períodos pós-política para essa variável.  
+
+
+\begin{table}[H]
+	\centering
+	\caption{Coeficientes estimados para \texttt{PREV\_SOC\_PER\_TRAB} por período e metodologia}
+	\label{tab:prevsoc_coeff}
+	\begin{tabular}{lcccc}
+		\hline
+		\textbf{Período} & \textbf{TWFE} & \textbf{Sun \& Abraham} & \textbf{Callaway \& Sant'Anna} & \textbf{ETWFE} \\
+		\hline
+		T0 & -1,127*** & -1,275*** & -1,275*** & -1,275*** \\
+		T1 & -1,780*** & -2,033*** & -2,033*** & -2,033*** \\
+		T2 & -2,136*** & -2,214*** & -1,949*** & -1,949*** \\
+		T3 & -2,631*** & -2,666*** & -2,091*** & -2,091*** \\
+		\hline
+		\multicolumn{5}{l}{\footnotesize \textit{Notas:} $^{***}$ indica significância estatística ao nível de 5\%.} \\
+	\end{tabular}
+\end{table}
+
+		Apesar de pequenas diferenças nos coeficientes entre metodologias, o padrão de efeito negativo aumenta gradualmente do período de implementação (T0) até o terceiro período pós-política (T3), sugerindo um impacto cumulativo da desoneração da folha sobre essa variável. Do ponto de vista econômico, essa redução significativa e persistente da previdência social por trabalhador nos setores tratados é compatível com o desenho institucional da política de desoneração da folha de pagamentos, que substituiu a contribuição previdenciária incidente sobre a folha por uma alíquota sobre o faturamento. Esse mecanismo implica, de forma direta, uma diminuição do custo previdenciário associado a cada trabalhador formal, efeito que tende a se refletir nos valores de contribuição observados após a implementação da política . A intensificação gradual do efeito ao longo dos períodos pós-tratamento sugere que esse ajuste não ocorreu de forma imediata, mas foi sendo incorporado progressivamente pelas firmas à medida que adaptavam suas estruturas de custos ao novo regime tributário.
+		
+		Já os resultados para o benefício social por trabalhador indicam efeitos negativos associados à política, cuja significância estatística e persistência variam de acordo com a metodologia empregada. No período de implementação da política ($T0$), os coeficientes são estatisticamente significativos para todas as metodologias, com exceção do estimador de \citet{Callaway2021}. No período imediatamente posterior ($T1$), observa-se significância estatística para todas as metodologias consideradas. A partir de então, contudo, os resultados passam a divergir: nos estimadores de \citet{Callaway2021} e ETWFE, os efeitos deixam de ser estatisticamente significativos nos períodos subsequentes, enquanto no método de \cite{Sun2021} a significância se mantém apenas em $T1$. Em contraste, o estimador TWFE apresenta coeficientes estatisticamente significativos em todos os períodos analisados.
+		
+		
+\begin{table}[H]
+	\centering
+	\caption{Coeficientes estimados para o efeito da política sobre o benefício social por trabalhador}
+	\label{tab:beneficio_social}
+	\begin{tabular}{lcccc}
+		\hline
+		\textbf{Período} & \textbf{TWFE} & \textbf{Sun \& Abraham} & \textbf{Callaway \& Sant'Anna} & \textbf{ETWFE} \\
+		\hline
+		T0 & -0.484$^{***}$ & -0.426$^{***}$ & -0.426 & -0.426$^{***}$ \\
+		T1 & -0.812$^{***}$ & -0.934$^{***}$ & -0.934$^{***}$ & -0.934$^{***}$ \\
+		T2 & -0.992$^{***}$ & -0.985 & -0.768 & -0.768 \\
+		T3 & -1.032$^{***}$ & -0.584 & -0.113 & -0.113 \\
+		\hline
+		\multicolumn{5}{l}{\footnotesize \textit{Notas:} $^{***}$ indica significância estatística ao nível de 5\%.} \\
+	\end{tabular}
+\end{table}
+
+		
+		Os resultados distintos entre as metodologias podem ser explicados, em grande medida, pelas diferenças na forma como cada estimador lida com a heterogeneidade dos efeitos de tratamento ao longo do tempo e com a adoção escalonada da política entre os setores, uma vez que o benefício social por trabalhador apresenta uma dinâmica potencialmente mais sensível a ajustes de curto prazo, como mudanças temporárias na composição da remuneração ou no enquadramento contributivo dos vínculos formais, o que tende a gerar efeitos não constantes ao longo dos períodos pós-implementação.
+		
+		O estimador TWFE impõe, implicitamente, a hipótese de efeitos homogêneos entre coortes e constantes ao longo do tempo, o que pode levar à atribuição de peso excessivo a comparações entre unidades tratadas em momentos distintos \citep{DeChaisemartin2020}; \citep{Sun2021}. Em contextos com adoção escalonada e efeitos dinâmicos essa característica pode produzir estimativas que aparentam maior persistência temporal do impacto, mesmo quando os efeitos verdadeiros são predominantemente transitórios. Assim, a significância estatística observada em todos os períodos pós-política no TWFE deve ser interpretada com cautela. Por outro lado, os estimadores de \citet{Callaway2021}, ETWFE e \citet{Sun2021} permitem maior flexibilidade ao comparar unidades tratadas apenas com controles apropriados em cada período, o que tende a isolar melhor os efeitos específicos por horizonte temporal. Como consequência, esses métodos capturam de forma mais clara a dissipação dos impactos após os primeiros períodos pós-implementação, resultando em coeficientes que perdem significância estatística ao longo do tempo. 
+		
+		Do ponto de vista econômico, o impacto da política sobre o benefício social por trabalhador não deve ser interpretado de maneira idêntica ao observado para a previdência social por trabalhador, embora ambos estejam relacionados ao mesmo mecanismo institucional da desoneração da folha. Enquanto a previdência social reflete diretamente a redução da alíquota incidente sobre a folha de pagamentos, o benefício social por trabalhador abrange componentes mais amplos e heterogêneos da remuneração indireta, como benefícios trabalhistas e encargos associados, que podem responder de forma diferenciada à política. Dessa forma, os efeitos sobre os benefícios tendem a se manifestar principalmente nos períodos imediatamente posteriores à implementação da política e podem se dissipar ao longo do tempo, refletindo ajustes discricionários das firmas na composição de seus custos de trabalho, em vez de alterações legais automáticas.
+		
+		Quanto às demais variáveis analisadas - número de trabalhadores ligados à produção (\textit{POEBC\_PERFIRM}), número de trabalhadores não ligados à produção (\textit{POEWC\_PERFIRM}), salário por trabalhador ligado à produção (\textit{SAL\_PER\_TRABWC}) e salário por trabalhador não ligado à produção (\textit{SAL\_PER\_TRABBC}) -, os resultados indicam que não houve efeitos estatisticamente significativos em nenhum dos períodos pós-implementação da política para nenhuma das metodologias. 
+		
+		Essa evidência sugere que a desoneração da folha, embora tenha reduzido efetivamente o custo previdenciário das firmas, não se traduziu em alterações substanciais no emprego formal ou nos salários pagos, nem para trabalhadores ligados nem para não ligados à produção. Economicamente, isso é consistente com os resultados encontrados em estudos empíricos de \citet{docarmo2012}, \citet{Dallava2014} e \citet{Garcia2018}, que indicaram falta de significância da desoneração no nível de emprego e nos salários. Dessa forma, existem evidências de que a política cumpriu seu objetivo fiscal de reduzir encargos e custos fixos das firmas, mas não estimulou de forma robusta mudanças no emprego ou nos salários, reforçando a ideia de que seu efeito foi direcionado principalmente à redução de custos, e não à expansão do mercado de trabalho.
 				
-		\subsection{Empirical Approach}
+		\subsection{Testes de robustez}
+		
+		\subsection{Teste de pré-tendências paralelas}
+		
+		\begin{table}[H]
+			\centering
+			\caption{Teste de Wald para pré-trends (tendência paralela)}
+			\label{tab:wald_pretrend}
+			\begin{tabular}{l l c}
+				\hline
+				\textbf{Modelo} & \textbf{Variável} & \textbf{p-valor Wald} \\
+				\hline
+				TWFE   & PREVSOC\_pertrab & 0,399 \\
+				TWFE   & BEN\_pertrab     & 0,298 \\
+				ETWFE  & PREVSOC\_pertrab & 0,494 \\
+				ETWFE  & BEN\_pertrab     & 0,941 \\
+				SA     & PREVSOC\_pertrab & 0,436 \\
+				SA     & BEN\_pertrab     & 0,604 \\
+				CS     & PREVSOC\_pertrab & 0,736 \\
+				CS     & BEN\_pertrab     & 0,974 \\
+				\hline
+				\multicolumn{3}{l}{\footnotesize \textit{Fonte:} Elaborada pelo autor} \\
+			\end{tabular}
+		\end{table}
+		
+		Para os testes de robustez, foram analisadas apenas as variáveis em que se identificou coeficientes significativos nos modelos estimados e exibidos na figura~\ref{graf:resultados}. De forma geral, observa-se na Tabela~\ref{tab:wald_pretrend} que, independentemente do modelo utilizado (TWFE, ETWFE, SA ou CS) e da variável analisada (PREVSOC\_pertrab ou BEN\_pertrab), todos os p-valores do teste de Wald são consideravelmente superiores ao nível usual de significância de 5\%. Isso indica que não há evidência de diferenças sistemáticas nas tendências antes do início do tratamento, reforçando a validade da premissa de tendência paralela. Nessa perspectiva, esses resultados confirmam a inferência visual obtida a partir do gráfico de efeitos, evidenciando que os coeficientes dos períodos pré-tratamento não são significativos, o que possibilita que os efeitos estimados posteriormente sejam interpretados como consequência do tratamento aplicado.  
+
+		\subsection{Teste de placebo}
+		
+
+		
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\textwidth]{DIST_PLACEBO.png}
+			\caption{Distribuição dos efeitos do placebo}
+			\label{graf:histograma}
+		\end{figure}
+		
+Na figura~\ref{graf:histograma}, pode-se visualizar o histograma com a distribuição da média dos coeficientes pós-política em módulo para o conjunto de 1000 placebos de tratamento estimados, sendo a linha vermelha a magnitude média dos coeficientes originais também em módulo.
+
+Para a variável \textit{BEN\_pertrab}, observa-se que a linha vermelha toca a cauda superior da distribuição dos placebos para três das quatro metodologias - \citet{Callaway2021}, ETWFE e \cite{Sun2021} -, enquanto que para o TWFE não há sobreposição. Esse padrão indica que a magnitude do impacto não é elevada em relação à variabilidade observada nos placebos, sugerindo que o efeito da política sobre os benefícios por trabalhador tem intensidade moderada ou baixa.
+
+Por outro lado, para a variável \textit{PREVSOC\_pertrab}, a linha vermelha se encontra claramente distante da distribuição dos placebos em todas as metodologias, e nenhum coeficiente placebo médio supera a magnitude do efeito médio original. Isso evidencia um efeito robusto da política sobre a contribuição previdenciária por trabalhador, uma vez que a magnitude observada nos dados reais é muito maior do que qualquer variação aleatória simulada pelos placebos, reforçando a validade causal do efeito estimado. Os resultados médios por período de tempo e o percentual de coeficientes dos placebos com magnitude maior que o valor real estão apresentados no apêndice B, complementando a análise gráfica e permitindo a avaliação quantitativa da significância dos efeitos observados.
+
+
+Numa visão por período de tempo, a figura~\ref{graf:envelope} apresenta a evolução dos coeficientes estimados para cada período relativo à implementação da política, comparando os valores originais (linha vermelha) com as bandas representativas do intervalo entre os percentis 5\% e 95\% obtidos a partir dos coeficientes dos 1000 placebos. Para os períodos anteriores ao período 0 (pré-política), observa-se que a linha vermelha permanece dentro das bandas para ambas as variáveis em todas as metodologias, indicando que não há diferenças sistemáticas pré-existentes entre os setores tratados e não tratados, reforçando a validade da suposição de tendências paralelas.
+
+No caso da variável \textit{BEN\_pertrab}, a linha vermelha ultrapassa consistentemente as bandas para os períodos 0 e 1 em todas as metodologias, evidenciando que a política gerou efeitos positivos nesse intervalo temporal. No período 3, a linha vermelha deixa de ultrapassar as bandas nas metodologias \citet{Callaway2021}, ETWFE e \citet{Sun2021}, sugerindo que o efeito se dilui ao longo do tempo e perde significância relativa à variabilidade observada nos placebos.
+
+Para a variável \textit{PREVSOC\_pertrab}, a linha vermelha se mantém muito distante das bandas de placebo em todos os períodos pós-tratamento, indicando um efeito robusto e consistente da política sobre a contribuição previdenciária por trabalhador. 
+
+		
+				\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.9\textwidth]{LINHA_PLACEBO.png}
+			\caption{Gráfico de envelope de placebos}
+			\label{graf:envelope}
+		\end{figure}
 		
 		
 		
-		\section{Data}
+A tabela~\ref{tab:placebo_summary} apresenta a proporção de coeficientes obtidos nos placebos pós-política que foram estatisticamente significativos, por variável e metodologia utilizada. Observa-se que, para a variável \textit{BEN\_pertrab}, o percentual de coeficientes placebo significativos é relativamente baixo, variando entre 0,53\% e 5,22\%.. No caso da variável \textit{PREVSOC\_pertrab}, a proporção de placebos significativos é ligeiramente maior, entre 1,72\% e 6,65\%, mas ainda assim baixa, confirmando a robustez dos efeitos estimados. 
+
 		
-		\section{Results \label{rp}}
-		
-		
-		\subsection{Main Results and Discussion}
-		
-				
-		\subsection{Robustness Checks}
-						
+\begin{table}[H]
+	\centering
+	\caption{Proporção de placebos pós política significativos por variável e metodologia}
+	\label{tab:placebo_summary}
+	\resizebox{\textwidth}{!}{
+		\begin{tabular}{llccc}
+			\hline
+			\textbf{Variável} & \textbf{Metodologia} & \textbf{N. Coef. Estim.} & \textbf{N. Coef. Significativos} & \textbf{\% Significativo} \\
+			\hline
+			BEN\_pertrab     & Callaway \& Sant'anna & 4000 & 21  & 0,53 \% \\
+			BEN\_pertrab     & ETWFE                  & 4000 & 201 & 5,03 \% \\
+			BEN\_pertrab     & Sun \& Abraham         & 4000 & 209 & 5,22 \% \\
+			BEN\_pertrab     & TWFE                   & 4000 & 169 & 4,22 \% \\
+			PREVSOC\_pertrab & Callaway \& Sant'anna & 4000 & 69  & 1,72 \% \\
+			PREVSOC\_pertrab & ETWFE                  & 4000 & 244 & 6,10 \% \\
+			PREVSOC\_pertrab & Sun \& Abraham         & 4000 & 266 & 6,65 \% \\
+			PREVSOC\_pertrab & TWFE                   & 4000 & 235 & 5,88 \% \\
+			\hline
+			\multicolumn{5}{l}{\footnotesize \textit{Fonte:} Elaborada pelo autor} \\
+	\end{tabular}}
+\end{table}
+
 		
 		% ----------------------------------------------------
 		% Conclusão
-		\section{Concluding Remarks}
+		\section{Considerações finais}
 				
+		O presente estudo teve como objetivo analisar os efeitos da política de desoneração da folha de pagamentos sobre variáveis relacionadas ao emprego formal, salários e encargos sociais por trabalhador, utilizando metodologias capazes de capturar o padrão escalonado de implementação da política. Os resultados indicam que a desoneração não gerou impactos estatisticamente significativos sobre o nível de emprego nem sobre os salários, tanto de trabalhadores ligados quanto não ligados à produção. Por outro lado, observou-se efeito robusto e consistente sobre a contribuição previdenciária por trabalhador, evidenciando que a política reduziu custos para as empresas, mas sem provocar alterações substanciais na dinâmica do mercado de trabalho.
+		
+		Esses achados corroboram, em grande medida, a literatura empírica existente sobre a desoneração da folha no Brasil. Estudos como \citet{docarmo2012}, \citet{Dallava2014} e \citet{Garcia2018} também não identificaram efeitos significativos da política sobre emprego ou salários. A consistência dos resultados obtidos neste trabalho com estudos anteriores reforça a interpretação de que a desoneração atuou primariamente como instrumento de redução de custos, sem estímulo relevante à expansão do emprego formal.
+		
+		No entanto, uma limitação deste estudo deve ser ressaltada: a base de dados utilizada não permite distinguir explicitamente empresas optantes do Simples Nacional das não optantes, o que pode ter diluído o efeito da política, uma vez que a desoneração foi aplicada apenas sobre empresas do regime normal (não Simples). Essa limitação pode explicar, em parte, a ausência de impactos sobre emprego e salários e evidencia que os resultados devem ser interpretados considerando as características da amostra adotada. 
+		
 		
 				
 		%	\clearpage
@@ -130,8 +773,118 @@
 		
 		\cleardoublepage
 		
+		\section*{Apêndice}
 		\appendix
 		%\section{Appendix}
 		
- 		
+		\section{Setores por grupo de tratamento}
+		
+		\begin{table}[H]
+			\centering
+			\caption{Grupos de tratamento por setor (CNAE)}
+			\label{tab:grupos_tratamento_cnae}
+			\resizebox{\textwidth}{!}{
+				\begin{tabular}{|p{4cm}|p{14cm}|}
+					\hline
+					\textbf{Grupo} & \textbf{CNAEs} \\
+					\hline
+					Nunca tratados &
+					10.31, 10.32, 10.41, 10.42, 10.43, 10.51, 10.53, 10.63, 10.66, 10.71, 10.72, 10.81, 10.82, 10.93, 10.95,
+					11.11, 11.12, 11.13, 11.21, 12.10, 13.40, 16.10, 16.21, 18.12, 18.13, 18.22, 18.30, 19.22,
+					20.11, 20.12, 20.13, 20.14, 20.19, 20.21, 20.22, 20.31, 20.32, 20.33, 20.72, 20.93,
+					22.12, 23.20, 24.12, 24.41, 24.42, 24.43, 24.49, 24.52, 25.39, 25.50, 26.80,
+					29.50, 32.11, 32.12, 32.20 \\
+					\hline
+					Tratados em 2012 &
+					10.11, 10.52, 10.61, 10.62, 10.64, 10.65, 10.69, 10.91, 10.92, 10.94,
+					12.20, 13.11, 13.12, 13.13, 13.14, 13.21, 13.22, 13.30, 13.51, 13.52, 13.53, 13.54, 13.59,
+					14.11, 14.12, 14.13, 14.14, 14.21, 14.22,
+					15.10, 15.21, 15.29, 15.31, 15.32, 15.33, 15.39, 15.40,
+					16.22, 16.29, 18.11, 18.21,
+					20.40, 21.21, 21.22,
+					22.21, 22.22, 22.23,
+					23.91, 23.99,
+					25.21, 25.22, 25.91, 25.93, 25.99,
+					26.10, 26.21, 26.52,
+					27.32,
+					28.11, 28.12, 28.13, 28.14, 28.21, 28.22, 28.24, 28.25, 28.31, 28.32, 28.33, 28.40,
+					28.51, 28.52, 28.53, 28.54, 28.61, 28.62, 28.63, 28.64, 28.65, 28.66, 28.69,
+					29.10, 29.20, 29.41, 29.42, 29.43, 29.44, 29.45, 29.49,
+					30.11, 30.12, 30.91,
+					31.01, 31.03, 31.04,
+					32.30, 32.40, 32.92 \\
+					\hline
+					Tratados em 2013 &
+					10.12, 10.13, 10.20, 10.33, 10.96, 10.99,
+					11.22,
+					13.23,
+					16.23,
+					17.10, 17.21, 17.22, 17.31, 17.32, 17.33, 17.41, 17.42, 17.49,
+					20.29, 20.51, 20.52, 20.61, 20.62, 20.63, 20.71, 20.73, 20.99,
+					21.10, 21.23,
+					22.11, 22.19, 22.29,
+					23.11, 23.12, 23.19, 23.30, 23.41, 23.42, 23.49, 23.92,
+					24.11, 24.21, 24.22, 24.23, 24.24, 24.31, 24.39, 24.51,
+					25.11, 25.12, 25.13, 25.31, 25.32, 25.41, 25.42, 25.43, 25.92,
+					26.22, 26.31, 26.32, 26.40, 26.51, 26.60, 26.70,
+					27.10, 27.21, 27.22, 27.31, 27.33, 27.40, 27.51, 27.59, 27.90,
+					28.15, 28.23, 28.29,
+					29.30,
+					30.31, 30.92, 30.99,
+					31.02,
+					32.50, 32.91, 32.99 \\
+					\hline
+				\end{tabular}
+			}
+		\end{table}
+		
+		
+		\section{Resultados de Placebos}
+		
+\begin{table}[H]
+	\centering
+	\caption{Proporção de coeficientes placebos com magnitude maior que os valores reais}
+	\label{tab:placebo_results}
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{l l c c c c}
+			\hline
+			\textbf{Metodologia} & \textbf{Variável} & \textbf{Período} & \textbf{N. Coef. Estim.} & \textbf{N. Coef. Maiores} & \textbf{Prop. Maiores} \\
+			\hline
+			Callaway \& Sant'Anna & BEN\_pertrab     & 0 & 1000 & 16  & 0.016 \\
+			Callaway \& Sant'Anna & BEN\_pertrab     & 1 & 1000 & 0   & 0.000 \\
+			Callaway \& Sant'Anna & BEN\_pertrab     & 2 & 1000 & 41  & 0.041 \\
+			Callaway \& Sant'Anna & BEN\_pertrab     & 3 & 1000 & 848 & 0.848 \\
+			Callaway \& Sant'Anna & PREVSOC\_pertrab & 0 & 1000 & 0   & 0.000 \\
+			Callaway \& Sant'Anna & PREVSOC\_pertrab & 1 & 1000 & 0   & 0.000 \\
+			Callaway \& Sant'Anna & PREVSOC\_pertrab & 2 & 1000 & 0   & 0.000 \\
+			Callaway \& Sant'Anna & PREVSOC\_pertrab & 3 & 1000 & 0   & 0.000 \\
+			ETWFE                  & BEN\_pertrab     & 0 & 1000 & 16  & 0.016 \\
+			ETWFE                  & BEN\_pertrab     & 1 & 1000 & 0   & 0.000 \\
+			ETWFE                  & BEN\_pertrab     & 2 & 1000 & 41  & 0.041 \\
+			ETWFE                  & BEN\_pertrab     & 3 & 1000 & 848 & 0.848 \\
+			ETWFE                  & PREVSOC\_pertrab & 0 & 1000 & 0   & 0.000 \\
+			ETWFE                  & PREVSOC\_pertrab & 1 & 1000 & 0   & 0.000 \\
+			ETWFE                  & PREVSOC\_pertrab & 2 & 1000 & 0   & 0.000 \\
+			ETWFE                  & PREVSOC\_pertrab & 3 & 1000 & 0   & 0.000 \\
+			Sun \& Abraham         & BEN\_pertrab     & 0 & 1000 & 16  & 0.016 \\
+			Sun \& Abraham         & BEN\_pertrab     & 1 & 1000 & 0   & 0.000 \\
+			Sun \& Abraham         & BEN\_pertrab     & 2 & 1000 & 2   & 0.002 \\
+			Sun \& Abraham         & BEN\_pertrab     & 3 & 1000 & 281 & 0.281 \\
+			Sun \& Abraham         & PREVSOC\_pertrab & 0 & 1000 & 0   & 0.000 \\
+			Sun \& Abraham         & PREVSOC\_pertrab & 1 & 1000 & 0   & 0.000 \\
+			Sun \& Abraham         & PREVSOC\_pertrab & 2 & 1000 & 0   & 0.000 \\
+			Sun \& Abraham         & PREVSOC\_pertrab & 3 & 1000 & 0   & 0.000 \\
+			TWFE                   & BEN\_pertrab     & 0 & 1000 & 0   & 0.000 \\
+			TWFE                   & BEN\_pertrab     & 1 & 1000 & 0   & 0.000 \\
+			TWFE                   & BEN\_pertrab     & 2 & 1000 & 1   & 0.001 \\
+			TWFE                   & BEN\_pertrab     & 3 & 1000 & 29  & 0.029 \\
+			TWFE                   & PREVSOC\_pertrab & 0 & 1000 & 0   & 0.000 \\
+			TWFE                   & PREVSOC\_pertrab & 1 & 1000 & 0   & 0.000 \\
+			TWFE                   & PREVSOC\_pertrab & 2 & 1000 & 0   & 0.000 \\
+			TWFE                   & PREVSOC\_pertrab & 3 & 1000 & 0   & 0.000 \\
+			\hline
+			\multicolumn{6}{l}{\footnotesize \textit{Fonte:} Elaborada pelo autor} \\
+		\end{tabular}%
+	}
+\end{table}
 	\end{document}

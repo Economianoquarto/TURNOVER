@@ -1,6 +1,6 @@
 # Main script for reproducing the research fully
-# Authors: 
-# Last script update: 2025-08-21
+# Authors: Caio Matteucci, Gabriel Gaze
+# Last script update: 2026-01-25
 
 # install.packages('readxl', 'tidyverse', 'sidrar','plm','ivreg', 'tidyverse', 'writexl', 'readxl', 'purrr, 'tools')
 
@@ -15,6 +15,7 @@ library(readxl)
 library(tidyverse)
 library(sidrar)
 library(plm)
+library(tidyr)
 library(ivreg)
 library(tidyverse)
 library(writexl)
